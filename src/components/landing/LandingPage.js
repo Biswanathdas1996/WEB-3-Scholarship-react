@@ -61,7 +61,7 @@ export default function LandingPage() {
               E-SCHOLARSHIP
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-             Reduce Corruption to when receive Scholarship.
+             Reduce Corruption  when spend your Scholarship.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -72,6 +72,9 @@ export default function LandingPage() {
               <Button variant="contained">Login</Button>
               <Link to="/register">
                     <Button variant="outlined">Register</Button>
+              </Link>
+              <Link to="/vendor-register">
+                    <Button variant="outlined">Vendor Register</Button>
               </Link>
             </Stack>
           </Container>

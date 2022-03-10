@@ -10,15 +10,15 @@ const StudentRegistration = () => {
   const account = useContext(AccountContest);
   const [start, setStart] = useState(false);
 
-  const getDataFromDatabase = (name, rollNo) => {
+  const getDataFromDatabase = (name, uniqueNo) => {
     fetch("http://localhost:6060/posts")
       .then((res) => res.json())
       .then((json) => {
         const validateStudent = json.data.find(
-          (data) => data.rollNo === rollNo
+          (data) => data.uniqueNo === uniqueNo
         );
         if (validateStudent) {
-          submitForm(name, rollNo, validateStudent?.score);
+          submitForm(name, uniqueNo, validateStudent?.score);
         } else {
           swal("Sorry you are not validated", {
             icon: "error",
@@ -27,10 +27,10 @@ const StudentRegistration = () => {
       });
   };
 
-  const submitForm = async (name, rollNo, score) => {
+  const submitForm = async (name, uniqueNo, score) => {
     setStart(true);
     await lottery.methods
-      .register(name, Number(rollNo), Number(score))
+      .register(name, Number(uniqueNo), Number(score))
       .send({
         from: account[0],
         value: 0,
@@ -53,6 +53,7 @@ const StudentRegistration = () => {
   return (
     <>
       {start && <LinearProgress color="secondary" />}
+
       <Form submitForm={getDataFromDatabase} />
     </>
   );

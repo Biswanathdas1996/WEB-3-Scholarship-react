@@ -19,14 +19,16 @@ const TransctionList = () => {
 
   return (
     <Container>
-      <Row>
+      <Row style={{ marginTop: 30 }}>
         <Col>
+          <h4>All Transctions</h4>
+          <p>List amount transferred to the beneficiaries</p>
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Roll No</th>
+                <th>Unique No</th>
                 <th>Score</th>
                 <th>Address</th>
                 <th>Amount</th>

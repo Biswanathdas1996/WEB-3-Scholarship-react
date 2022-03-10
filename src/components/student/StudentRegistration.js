@@ -5,7 +5,6 @@ import LinearProgress from "@mui/material/LinearProgress";
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   cardHolder: {
       background: '#f3f3f4',
-      padding:'20px',
       alignItems:'center'
   
   },

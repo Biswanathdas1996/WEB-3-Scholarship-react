@@ -8,15 +8,10 @@ import swal from "sweetalert";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   cardHolder: {
-    background: "#f3f3f4",
+    background: "#6d9ac4",
     padding: "20px",
     alignItems: "center",
-  },
-  card: {
-    maxWidth: 800,
-    borderRadius: 12,
-    margin: "1rem",
-  },
+  }
 }));
 
 const StudentRegistration = () => {

@@ -11,10 +11,11 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
     background: "#f3f3f4",
     padding: "20px",
     alignItems: "center",
-    minHeight: 900,
+    minHeight: 800,
   },
   card: {
     maxWidth: 800,
+    minWidth:400,
     borderRadius: 12,
     margin: "1rem",
   },

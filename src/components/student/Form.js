@@ -8,14 +8,13 @@ import { Card, Grid } from "@mui/material";
 import "date-fns";
 
 import Typography from "@mui/material/Typography";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
-  cardHolder: {
-    background: "#1A2038",
-  },
   card: {
     maxWidth: 900,
-    borderRadius: 12,
+    minWidth:400,
+    borderRadius: 5,
     margin: "1rem",
   },
 }));
@@ -49,32 +48,13 @@ const FormUI = ({ submitForm }) => {
     <div>
       <Card className={classes.card}>
         <Grid container>
-          <Grid item lg={5} md={5} sm={5} xs={12}>
-            <div
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                display: "flex",
-                height: "100%",
-              }}
-            >
-              <img
-                style={{ width: "80%", verticalAlign: "center" }}
-                className="w-full"
-                src="/assets/images/pwc_logo.png"
-                alt=""
-              />
-            </div>
-          </Grid>
-          <Grid item lg={7} md={7} sm={7} xs={12}>
-            <div>
-              <Typography sx={{ m: 4 }} component="h1" variant="h5">
-                Welcome to E-Scholarship
+         
+          <Grid item lg={12} md={12} sm={12} xs={12}>
+              <Typography sx={{ m: 2 ,mb:0}} component="h1" variant="h5">
+                Student Registration
               </Typography>
-            </div>
-
             <div
-              className="p-8 h-full"
+              className="p-4 h-full"
               style={{ justifyContent: "center", padding: "20px" }}
             >
               <Formik
@@ -149,7 +129,8 @@ const FormUI = ({ submitForm }) => {
                       />
                     </div>
 
-                    <span className="input-group-btn">
+                    
+                    <span className="form-group" >
                       <input
                         className="btn btn-default btn-primary"
                         type="submit"

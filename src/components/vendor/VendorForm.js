@@ -16,7 +16,8 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
   },
   card: {
     maxWidth: 900,
-    borderRadius: 12,
+    minWidth:400,
+    borderRadius: 5,
     margin: "1rem",
   },
 }));
@@ -52,30 +53,12 @@ const VendorForm = ({ submitForm }) => {
     <div>
       <Card className={classes.card}>
         <Grid container>
-          <Grid item lg={5} md={5} sm={5} xs={12}>
-            <div
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                display: "flex",
-                height: "100%",
-              }}
-            >
-              <img
-                style={{ width: "80%", verticalAlign: "center" }}
-                className="w-full"
-                src="/assets/images/pwc_logo.png"
-                alt=""
-              />
-            </div>
-          </Grid>
-          <Grid item lg={7} md={7} sm={7} xs={12}>
-            <div>
-              <Typography sx={{ m: 4 }} component="h1" variant="h5">
+         
+          <Grid item lg={12} md={12} sm={12} xs={12}>
+            
+              <Typography sx={{ m: 2 }} component="h1" variant="h5">
                 Vendor Registration
               </Typography>
-            </div>
-
             <div
               className="p-8 h-full"
               style={{ justifyContent: "center", padding: "20px" }}

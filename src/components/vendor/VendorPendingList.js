@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -9,23 +9,30 @@ import Paper from "@mui/material/Paper";
 import VendorData from "./VendorData";
 import SideBar from "../common/SideBar";
 import contract from "../../contract/Lottery";
+import VendorHeader from "./VendorHeader";
 
-const mdTheme = createTheme();
-export default function VendorList() {
+const theme = createTheme();
+export default function VendorPendingList() {
+  const [vendorData,setVendorData]=useState([])
   useEffect(() => {
-    fetchStudentData();
+    fetchVendorData();
   }, []);
 
-  async function fetchStudentData() {
+  async function fetchVendorData() {
     const vendorList = await contract.methods.getListOfVendors().call();
+    const pendingVendor=vendorList.filter(item=>item.status===false)
     console.log("vendor", vendorList);
+    setVendorData(pendingVendor)
   }
 
   return (
-    <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <SideBar></SideBar>
+
+
+<ThemeProvider theme={theme}>
+      <CssBaseline />
+      <VendorHeader name={"Ajay"} />
+      <main>
+        {/* Hero unit */}
         <Box
           component="main"
           sx={{
@@ -38,18 +45,20 @@ export default function VendorList() {
             overflow: "auto",
           }}
         >
-          <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <VendorData />
+                  <VendorData title="Vendor Pending List" vendorData={vendorData} />
                 </Paper>
               </Grid>
             </Grid>
+        
           </Container>
         </Box>
-      </Box>
+        
+      </main>
+     
     </ThemeProvider>
   );
 }

@@ -18,35 +18,13 @@ import Title from "../vendor/Title";
 import { Button, Divider, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import contract from "../../contract/Lottery";
+import VendorHeader from "./VendorHeader";
 
-const mdTheme = createTheme();
-
+const theme = createTheme();
 export default function IssueDevice() {
   const [rollNo, setRollNo] = useState();
-  const [studentList, setStudentList] = useState([
-    {
-      id: 1,
-      sl_no: 1,
-      name: "Test",
-      dob: "02/03/1993",
-      parent_no: "9002198887",
-      school_name: "Tarakeswar High school",
-      class_name: 12,
-      roll_no: 11,
-      status: 0,
-    },
-    {
-      id: 2,
-      sl_no: 2,
-      name: "Test2",
-      dob: "05/03/1993",
-      parent_no: "9034778823",
-      school_name: "Ramnagar high School",
-      class_name: 10,
-      roll_no: 13,
-      status: 0,
-    },
-  ]);
+  const [studentList, setStudentList] = useState([]);
+  const [student,setStudent]=useState([])
 
   useEffect(() => {
     fetchIssueDevice();
@@ -57,26 +35,32 @@ export default function IssueDevice() {
     const listOfDeviceIssue = await contract.methods
       .getListOfDeviceIssue()
       .call();
+     
     console.log("listOfDeviceIssue", listOfDeviceIssue);
   }
 
   async function fetchStudentData() {
     const students = await contract.methods.getListOfStudents().call();
+    setStudentList(students)
     console.log("students", students);
   }
 
-  const findStudentByRoll = () => {
+  const findStudentByRoll = async() => {
     let newStudenList = studentList.filter(
-      (student) => student.roll_no == rollNo
+      (item) => item.rollNo == rollNo
     );
-    setStudentList(newStudenList);
+    
+    console.log("dsdsstudent-",newStudenList)
+    await setStudent(newStudenList);
+    console.log("new student-",student)
   };
 
   return (
-    <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <SideBar></SideBar>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <VendorHeader name={"Ajay"} />
+      <main>
+        {/* Hero unit */}
         <Box
           component="main"
           sx={{
@@ -89,7 +73,6 @@ export default function IssueDevice() {
             overflow: "auto",
           }}
         >
-          <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
@@ -118,26 +101,23 @@ export default function IssueDevice() {
                   <Table size="small">
                     <TableHead>
                       <TableRow>
-                        <TableCell>SL.No</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Dob</TableCell>
-                        <TableCell>Parent No</TableCell>
-                        <TableCell>School Name</TableCell>
-                        <TableCell>Class Name</TableCell>
+                        <TableCell>Amount</TableCell>
                         <TableCell>Roll No</TableCell>
+                        <TableCell>Address</TableCell>
                         <TableCell align="right">Action</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {studentList.map((row) => (
-                        <TableRow key={row.sl_no}>
-                          <TableCell>{row.sl_no}</TableCell>
+                      {student.map((row) => (
+                        <TableRow >
                           <TableCell>{row.name}</TableCell>
                           <TableCell>{row.dob}</TableCell>
-                          <TableCell>{row.parent_no}</TableCell>
-                          <TableCell>{row.school_name}</TableCell>
-                          <TableCell>{row.class_name}</TableCell>
+                          <TableCell>{row.amount}</TableCell>
                           <TableCell>{row.roll_no}</TableCell>
+                          <TableCell>{row.StudentAddress}</TableCell>
+                          
                           <TableCell align="right">
                             <Link to={`/assign-device/${row.id}`}>
                               <Button variant="outlined">Issue</Button>
@@ -148,11 +128,14 @@ export default function IssueDevice() {
                     </TableBody>
                   </Table>
                 </Paper>
-              </Grid>
+                </Grid>
             </Grid>
+        
           </Container>
         </Box>
-      </Box>
+        
+      </main>
+     
     </ThemeProvider>
   );
 }

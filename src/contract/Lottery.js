@@ -1,6 +1,6 @@
 import web3 from "../web3";
 
-const address = "0x303cff3B794F4f81005578061E4290B0D3397A4C";
+const address = "0x5dF92e736E57900Bc782bCACB339bC72fDE489E6";
 
 const abi = [
   {
@@ -68,6 +68,7 @@ const abi = [
       { name: "name", type: "string" },
       { name: "rollNo", type: "uint256" },
       { name: "deviceIMEI", type: "string" },
+      { name: "amount", type: "uint256" },
     ],
     payable: false,
     stateMutability: "view",
@@ -107,6 +108,30 @@ const abi = [
   },
   {
     constant: true,
+    inputs: [],
+    name: "getListOfVendors",
+    outputs: [
+      {
+        components: [
+          { name: "name", type: "string" },
+          { name: "registrationNo", type: "string" },
+          { name: "vendorAddress", type: "string" },
+          { name: "pincode", type: "uint256" },
+          { name: "vendorWalletAddress", type: "address" },
+          { name: "status", type: "bool" },
+          { name: "approverAddress", type: "address" },
+          { name: "amount", type: "uint256" },
+        ],
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
     inputs: [{ name: "", type: "uint256" }],
     name: "depositer",
     outputs: [
@@ -138,6 +163,26 @@ const abi = [
     outputs: [],
     payable: true,
     stateMutability: "payable",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: "getListOfDeviceIssue",
+    outputs: [
+      {
+        components: [
+          { name: "name", type: "string" },
+          { name: "rollNo", type: "uint256" },
+          { name: "deviceIMEI", type: "string" },
+          { name: "amount", type: "uint256" },
+        ],
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
     type: "function",
   },
   {

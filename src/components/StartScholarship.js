@@ -87,7 +87,7 @@ const FormUI = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "87vh",
+          // height: "87vh",
           display: "grid",
           placeContent: "center",
         }}
@@ -95,11 +95,12 @@ const FormUI = () => {
       >
         <center>
           <p>
+            <br />
             <h5 style={{ color: "grey", fontSize: 15 }}>
               Current account: {account && account[0]}
             </h5>
             <h1>
-              Current Balance{" "}
+              Current contract balance{" "}
               <b style={{ color: "#ff8f00" }}>
                 {balance / 1000000000000000000} ETH
               </b>
@@ -165,6 +166,7 @@ const FormUI = () => {
         <Row style={{ marginTop: 30 }}>
           <Col>
             <h3>Transctions </h3>
+            <p>List of amount deposit</p>
             <TransctionList depositors={depositors} />
           </Col>
         </Row>

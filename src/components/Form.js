@@ -9,7 +9,7 @@ import * as Yup from "yup";
 
 const LoginSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
-  number: Yup.string().trim().required("Roll no is required"),
+  number: Yup.string().trim().required("Unique no is required"),
 });
 
 const FormUI = ({ submitForm }) => {
@@ -42,6 +42,8 @@ const FormUI = ({ submitForm }) => {
       }}
       fluid
     >
+      <h4>Registration</h4>
+      <p>Register yourself to get the amount</p>
       <Row>
         <Col
           style={{
@@ -84,12 +86,12 @@ const FormUI = ({ submitForm }) => {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="number">Roll No</label>
+                    <label htmlFor="number">Unique No</label>
                     <Field
                       type="number"
                       name="number"
                       autoComplete="flase"
-                      placeholder="Enter contact Roll No"
+                      placeholder="Enter contact Unique No"
                       className={`form-control text-muted ${
                         touched.number && errors.number ? "is-invalid" : ""
                       }`}

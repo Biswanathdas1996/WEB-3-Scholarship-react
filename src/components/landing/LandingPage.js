@@ -69,9 +69,9 @@ export default function LandingPage() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Login</Button>
+              
               <Link to="/register">
-                    <Button variant="outlined">Register</Button>
+                    <Button variant="outlined">Studet Register</Button>
               </Link>
               <Link to="/vendor-register">
                     <Button variant="outlined">Vendor Register</Button>

@@ -55,7 +55,7 @@ export default function LandingPage() {
             >
               
               <Link to="/register">
-                    <Button variant="outlined">Studet Register</Button>
+                    <Button variant="outlined">Student Register</Button>
               </Link>
               <Link to="/vendor-register">
                     <Button variant="outlined">Vendor Register</Button>

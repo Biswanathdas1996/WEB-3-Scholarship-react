@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import VendorData from './VendorData';
 import SideBar from '../common/SideBar';
-
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -16,102 +16,164 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
 import { Button, Divider, TextField } from '@mui/material';
+import * as Yup from "yup";
+import swal from "sweetalert";
 import { Link } from 'react-router-dom';
 const mdTheme = createTheme();
 
+const AssignDeviceSchema = Yup.object().shape({
+  otp: Yup.string().required("Otp is required"),
+  imei_no: Yup.string().trim().required("IMEI no is required"),
+  amount: Yup.number().required("Amount is required"),
+});
 
+export default function AssignDevice({studentDetails,setDetailsIndex}) {
+  console.log("studentDetails-",studentDetails);
 
-export default function AssignDevice() {
-
-    const [rollNo,setRollNo]=useState()
-    const [studentData,setStudentData]=useState({
-        id:1,
-        sl_no:1,
-        name:"Test",
-        dob:"02/03/1993",
-        parent_no:"9002198887",
-        school_name:"Tarakeswar High school",
-        class_name:12,
-        roll_no:11,
-        status:0,
+  const saveData = (value) => {
+    const { otp,imei_no,amount } = value;
+    console.log(value);
+    swal({
+      title: "Are you sure?",
+      text: "Want to submit the form !",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        //submitForm(name, roll_no, dob);
       }
-    )
-
-    const findStudentByRoll=()=>{
-
-
-    }
+    });
+  };
+ 
 
   return (
-    <ThemeProvider theme={mdTheme}>
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <SideBar></SideBar>
-      <Box
-        component="main"
-        sx={{
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-              ? theme.palette.grey[100]
-              : theme.palette.grey[900],
-          flexGrow: 1,
-          height: '100vh',
-          overflow: 'auto',
-        }}
-      >
-        <Toolbar />
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-          <Grid container spacing={3}>
+        <>
+        
             <Grid item xs={12}>
-              <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+            
                 <Title>Assign Device</Title>
                 <Divider sx={{ my: 1 }} />
-               
-
-                
-
-
                 <Table size="small">
                   <TableBody>
                       <TableRow >
                         <TableCell>Name:</TableCell>
-                        <TableCell>{studentData.name}</TableCell>
+                        <TableCell>{studentDetails.name}</TableCell>
                       </TableRow>
                       <TableRow >
                         <TableCell>Date Of birth:</TableCell>
-                        <TableCell>{studentData.dob}</TableCell>
-                      </TableRow>
-                      <TableRow >
-                        <TableCell>Parent Number:</TableCell>
-                        <TableCell>{studentData.parent_no}</TableCell>
-                      </TableRow>
-                      <TableRow >
-                        <TableCell>School Name:</TableCell>
-                        <TableCell>{studentData.school_name}</TableCell>
-                      </TableRow>
-                      <TableRow >
-                        <TableCell>Class Name:</TableCell>
-                        <TableCell>{studentData.class_name}</TableCell>
+                        <TableCell>{studentDetails.dob}</TableCell>
                       </TableRow>
                       <TableRow >
                         <TableCell>Roll No:</TableCell>
-                        <TableCell>{studentData.roll_no}</TableCell>
+                        <TableCell>{studentDetails.rollNo}</TableCell>
+                      </TableRow>
+                      <TableRow >
+                        <TableCell>Amount:</TableCell>
+                        <TableCell>{studentDetails.amount}</TableCell>
                       </TableRow>
                   
                   </TableBody>
                 </Table>
                 
                 <Grid item xs={12} sx={{ my: 1 }}>
-                  <TextField id="outlined-basic" name="otp" label="Enter otp" variant="outlined" onChange={e=>setRollNo(e.target.value)} />
-                  <TextField id="outlined-basic" name="imei_no" label="Enter IMEI No of Device" className='ml-2' variant="outlined" onChange={e=>setRollNo(e.target.value)} />
-                  <Button variant="outlined" className='ml-2' onClick={findStudentByRoll}>Save</Button>
+                <div
+              className="p-4 h-full"
+              style={{ marginLeft: "30%", padding: "20px", width:400,border: '2px solid #0b9e9e',padding: '35px',borderRadius: '8px' }}
+            >
+                <Formik
+                initialValues={{
+                  name: "",
+                  roll_no: "",
+                  dob: "",
+                }}
+                validationSchema={AssignDeviceSchema}
+                onSubmit={(values, { setSubmitting }) => {
+                  console.log(values);
+                  saveData(values);
+                  setSubmitting(false);
+                }}
+              >
+                {({ touched, errors, isSubmitting }) => (
+                  <Form>
+                    <div className="form-group">
+                      <label htmlFor="name">Otp</label>
+                      <Field
+                        type="text"
+                        name="otp"
+                        autoComplete="flase"
+                        placeholder="Enter Otp"
+                        className={`form-control text-muted ${
+                          touched.otp && errors.otp ? "is-invalid" : ""
+                        }`}
+                      />
+
+                      <ErrorMessage
+                        component="div"
+                        name="otp"
+                        className="invalid-feedback"
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="name">IMEI Number</label>
+                      <Field
+                        type="text"
+                        name="imei_no"
+                        autoComplete="flase"
+                        placeholder="Enter IMEI No"
+                        className={`form-control text-muted ${
+                          touched.imei_no && errors.imei_no ? "is-invalid" : ""
+                        }`}
+                      />
+
+                      <ErrorMessage
+                        component="div"
+                        name="imei_no"
+                        className="invalid-feedback"
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="name">Amount</label>
+                      <Field
+                        type="text"
+                        name="amount"
+                        autoComplete="flase"
+                        placeholder="Enter IMEI No"
+                        className={`form-control text-muted ${
+                          touched.amount && errors.amount ? "is-invalid" : ""
+                        }`}
+                      />
+
+                      <ErrorMessage
+                        component="div"
+                        name="amount"
+                        className="invalid-feedback"
+                      />
+                    </div>
+
+                    <span className="form-group" >
+                      <input
+                        className="btn btn-default btn-primary"
+                        type="submit"
+                        value="Assign"
+                      />
+                    </span>
+
+                  
+
+                  </Form>)}
+                </Formik>
+                </div>
                 </Grid>
-              </Paper>
+             
+
+                <Button onClick={()=>setDetailsIndex("")}>Back</Button>
+              
             </Grid>
-          </Grid>
-        </Container>
-      </Box>
-    </Box>
-  </ThemeProvider>
+          
+        </>
+     
   );
 }

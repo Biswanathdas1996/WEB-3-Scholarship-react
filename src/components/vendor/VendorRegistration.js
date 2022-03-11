@@ -11,7 +11,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
     background: "#f3f3f4",
     padding: "20px",
     alignItems: "center",
-    minHeight: 800,
+    minHeight: 700,
   },
   card: {
     maxWidth: 800,

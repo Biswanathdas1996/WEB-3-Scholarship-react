@@ -8,9 +8,10 @@ import swal from "sweetalert";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   cardHolder: {
-    background: "#6d9ac4",
+    background: "#f3f3f4",
     padding: "20px",
     alignItems: "center",
+    height:700
   }
 }));
 

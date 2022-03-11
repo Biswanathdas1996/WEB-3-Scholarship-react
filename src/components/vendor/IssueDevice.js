@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import VendorData from "./VendorData";
 import SideBar from "../common/SideBar";
-
+import Alert from '@mui/material/Alert';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -19,12 +19,15 @@ import { Button, Divider, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import contract from "../../contract/Lottery";
 import VendorHeader from "./VendorHeader";
+import AssignDevice from "./AssignDevice";
 
 const theme = createTheme();
 export default function IssueDevice() {
   const [rollNo, setRollNo] = useState();
   const [studentList, setStudentList] = useState([]);
   const [student,setStudent]=useState([])
+  const [isSubmit,setIsSubmit]=useState(false)
+  const [detailsIndex,setDetailsIndex]=useState("")
 
   useEffect(() => {
     fetchIssueDevice();
@@ -46,6 +49,7 @@ export default function IssueDevice() {
   }
 
   const findStudentByRoll = async() => {
+    setIsSubmit(true)
     let newStudenList = studentList.filter(
       (item) => item.rollNo == rollNo
     );
@@ -76,28 +80,37 @@ export default function IssueDevice() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+                {detailsIndex===""&&<Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   <Title>Issue Device</Title>
                   <Divider sx={{ my: 1 }} />
-                  <Grid item xs={8}>
-                    <TextField
-                      id="outlined-basic"
-                      name="roll"
-                      label="Enter Roll no"
-                      variant="outlined"
-                      onChange={(e) => setRollNo(e.target.value)}
-                    />
-                    <Button
-                      variant="outlined"
-                      className="ml-2"
-                      onClick={findStudentByRoll}
-                    >
-                      Search
-                    </Button>
+                  <Grid container >
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={6} >
+                      <div style={{border: '2px solid #0b9e9e',padding: '35px',borderRadius: '8px'}}>
+                        <div className="form-group">
+                          <TextField
+                            id="outlined-basic"
+                            name="roll"
+                            label="Enter Roll no"
+                            variant="outlined"
+                            size="small"
+                            onChange={(e) => setRollNo(e.target.value)}
+                          />
+                        </div>
+                        <div>  
+                        <Button
+                            variant="outlined"
+                            onClick={findStudentByRoll}
+                          >
+                            Search
+                          </Button>
+                        </div>
+                      </div>
+                    </Grid>
+                    <Grid item xs={3}></Grid>
                   </Grid>
-
-                  <Divider sx={{ my: 1 }} />
-
+                </Paper>}
+                {isSubmit&&detailsIndex===""&&<Paper sx={{ p: 2, mt:3, display: "flex", flexDirection: "column" }}>
                   <Table size="small">
                     <TableHead>
                       <TableRow>
@@ -110,7 +123,10 @@ export default function IssueDevice() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {student.map((row) => (
+                    {student.length==0&&<TableRow>
+                        <TableCell colSpan={6}><Alert severity="warning">Student Details Not available!</Alert></TableCell>
+                    </TableRow>}
+                      {student.map((row,key) => (
                         <TableRow >
                           <TableCell>{row.name}</TableCell>
                           <TableCell>{row.dob}</TableCell>
@@ -119,15 +135,20 @@ export default function IssueDevice() {
                           <TableCell>{row.StudentAddress}</TableCell>
                           
                           <TableCell align="right">
-                            <Link to={`/assign-device/${row.id}`}>
-                              <Button variant="outlined">Issue</Button>
-                            </Link>
+                              <Button variant="outlined" onClick={()=>setDetailsIndex(key+1)}>Issue</Button>
                           </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
                   </Table>
-                </Paper>
+                </Paper>}
+
+                {student.length!==0&&detailsIndex!=""&&<Paper sx={{ p: 2, mt:3, display: "flex", flexDirection: "column" }}>
+
+                <AssignDevice studentDetails={student[detailsIndex-1]} setDetailsIndex={setDetailsIndex}/> 
+                </Paper>}
+
+
                 </Grid>
             </Grid>
         

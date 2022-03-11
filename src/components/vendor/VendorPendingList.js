@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -13,22 +13,20 @@ import VendorHeader from "./VendorHeader";
 
 const theme = createTheme();
 export default function VendorPendingList() {
-  const [vendorData,setVendorData]=useState([])
+  const [vendorData, setVendorData] = useState([]);
   useEffect(() => {
     fetchVendorData();
   }, []);
 
   async function fetchVendorData() {
     const vendorList = await contract.methods.getListOfVendors().call();
-    const pendingVendor=vendorList.filter(item=>item.status===false)
+    const pendingVendor = vendorList.filter((item) => item.status === false);
     console.log("vendor", vendorList);
-    setVendorData(pendingVendor)
+    setVendorData(pendingVendor);
   }
 
   return (
-
-
-<ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <VendorHeader name={"Ajay"} />
       <main>
@@ -49,16 +47,16 @@ export default function VendorPendingList() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <VendorData title="Vendor Pending List" vendorData={vendorData} />
+                  <VendorData
+                    title="Vendor Pending List"
+                    vendorData={vendorData}
+                  />
                 </Paper>
               </Grid>
             </Grid>
-        
           </Container>
         </Box>
-        
       </main>
-     
     </ThemeProvider>
   );
 }

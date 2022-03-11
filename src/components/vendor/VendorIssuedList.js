@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -14,24 +14,21 @@ import IssuedStudentData from "./IssuedStudentData";
 import VendorHeader from "./VendorHeader";
 const theme = createTheme();
 export default function StudentList() {
-  const [studentList,setStudentList]=useState([])
+  const [studentList, setStudentList] = useState([]);
   useEffect(() => {
     fetchStudentData();
   }, []);
 
-
   async function fetchStudentData() {
     const students = await contract.methods.getListOfStudents().call();
-    setStudentList(students)
+    setStudentList(students);
     console.log("students", students);
   }
 
   return (
-
-
-<ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <VendorHeader name={"Ajay"} />
+      <VendorHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box
@@ -50,16 +47,17 @@ export default function StudentList() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <IssuedStudentData title="Iussed Device List" studentData={studentList} back_url="/vendor-dashboard"/>
+                  <IssuedStudentData
+                    title="Iussed Device List"
+                    studentData={studentList}
+                    back_url="/vendor-dashboard"
+                  />
                 </Paper>
               </Grid>
             </Grid>
-        
           </Container>
         </Box>
-        
       </main>
-     
     </ThemeProvider>
   );
 }

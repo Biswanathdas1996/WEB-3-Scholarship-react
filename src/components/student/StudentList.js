@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -13,24 +13,21 @@ import StudentData from "./StudentData";
 import AdminHeader from "../admin/AdminHeader";
 const theme = createTheme();
 export default function StudentList() {
-  const [studentList,setStudentList]=useState([])
+  const [studentList, setStudentList] = useState([]);
   useEffect(() => {
     fetchStudentData();
   }, []);
 
-
   async function fetchStudentData() {
     const students = await contract.methods.getListOfStudents().call();
-    setStudentList(students)
+    setStudentList(students);
     console.log("students", students);
   }
 
   return (
-
-
-<ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AdminHeader name={"Ajay"} />
+      <AdminHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box
@@ -53,12 +50,9 @@ export default function StudentList() {
                 </Paper>
               </Grid>
             </Grid>
-        
           </Container>
         </Box>
-        
       </main>
-     
     </ThemeProvider>
   );
 }

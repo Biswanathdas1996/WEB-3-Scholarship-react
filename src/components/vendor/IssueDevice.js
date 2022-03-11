@@ -60,7 +60,7 @@ export default function IssueDevice() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <VendorHeader name={"Ajay"} />
+      <VendorHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box

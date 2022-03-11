@@ -13,7 +13,10 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import VendorDashboard from "./components/vendor/VendorDashboard";
 import VendorApprovedList from "./components/vendor/VendorApprovedList";
 import StudentList from "./components/student/StudentList";
+import StudentDetails from "./components/student/StudentDetails";
 import VendorIssuedList from "./components/vendor/VendorIssuedList";
+import VendorTransaction from "./components/vendor/VendorTransaction";
+import AdminTransaction from "./components/admin/AdminTransaction";
 export const AccountContest = React.createContext("light");
 
 const App = () => {
@@ -37,10 +40,13 @@ const App = () => {
         <Route path="/vendor-approved" element={<VendorApprovedList />} />
         <Route path="/issue-device" element={<IssueDevice />} />
         <Route path="/vendor-issued-list" element={<VendorIssuedList />} />
+        <Route path="/vendor-transaction" element={<VendorTransaction />} />
         <Route path="/assign-device/:id" element={<AssignDevice />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/all-transaction" element={<AdminTransaction />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/student-list" element={<StudentList />} />
+        <Route path="/student-details" element={<StudentDetails />} />
       </Routes>
     </AccountContest.Provider>
   );

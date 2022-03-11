@@ -3,12 +3,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import swal from "sweetalert";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Card, Grid, TextField } from "@mui/material";
+import { Button, Card, Grid, TextField } from "@mui/material";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import "date-fns";
 import DatePicker from "@mui/lab/DatePicker";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   cardHolder: {
@@ -162,6 +163,7 @@ const VendorForm = ({ submitForm }) => {
                         type="submit"
                         value="Sign Up"
                       />
+                      <Link to="/"> <span style={{float:'right'}}><Button color="primary">Back</Button></span></Link>
                     </span>
                   </Form>
                 )}

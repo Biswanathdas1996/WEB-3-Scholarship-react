@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Link from '@mui/material/Link';
+import {Link} from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from '../vendor/Title';
-import { Button } from '@mui/material';
+import { Button, Divider } from '@mui/material';
 import Alert from '@mui/material/Alert';
 
 
@@ -18,8 +18,8 @@ function preventDefault(event) {
 export default function StudentData({title,studentData}) {
   return (
     <React.Fragment>
-      <Title>{title}</Title>
-
+      <Title>{title}<Link to="/admin-dashboard"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
+      <Divider sx={{ my: 1 }} />
       
       <Table size="small">
         <TableHead>

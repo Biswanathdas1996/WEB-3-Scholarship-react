@@ -12,7 +12,7 @@ import contract from "../../contract/Lottery";
 import StudentData from "./StudentData";
 import AdminHeader from "../admin/AdminHeader";
 const theme = createTheme();
-export default function VendorIssuedList() {
+export default function StudentList() {
   const [studentList,setStudentList]=useState([])
   useEffect(() => {
     fetchStudentData();

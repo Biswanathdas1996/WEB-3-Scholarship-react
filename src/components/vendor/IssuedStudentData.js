@@ -41,7 +41,7 @@ export default function IssuedStudentData({ title, issueDevice, back_url }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {issueDevice.length == 0 && (
+          {issueDevice?.length == 0 && (
             <TableRow>
               <TableCell colSpan={6}>
                 <Alert severity="warning">No Vendor available!</Alert>
@@ -49,7 +49,7 @@ export default function IssuedStudentData({ title, issueDevice, back_url }) {
             </TableRow>
           )}
 
-          {issueDevice.map((row, key) => (
+          {issueDevice?.map((row, key) => (
             <TableRow key={key}>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.rollNo}</TableCell>

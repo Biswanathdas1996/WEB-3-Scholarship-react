@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import VendorData from "./VendorData";
 import SideBar from "../common/SideBar";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -25,9 +25,9 @@ const theme = createTheme();
 export default function IssueDevice() {
   const [rollNo, setRollNo] = useState();
   const [studentList, setStudentList] = useState([]);
-  const [student,setStudent]=useState([])
-  const [isSubmit,setIsSubmit]=useState(false)
-  const [detailsIndex,setDetailsIndex]=useState("")
+  const [student, setStudent] = useState([]);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [detailsIndex, setDetailsIndex] = useState("");
 
   useEffect(() => {
     fetchIssueDevice();
@@ -38,31 +38,29 @@ export default function IssueDevice() {
     const listOfDeviceIssue = await contract.methods
       .getListOfDeviceIssue()
       .call();
-     
+
     console.log("listOfDeviceIssue", listOfDeviceIssue);
   }
 
   async function fetchStudentData() {
     const students = await contract.methods.getListOfStudents().call();
-    setStudentList(students)
+    setStudentList(students);
     console.log("students", students);
   }
 
-  const findStudentByRoll = async() => {
-    setIsSubmit(true)
-    let newStudenList = studentList.filter(
-      (item) => item.rollNo == rollNo
-    );
-    
-    console.log("dsdsstudent-",newStudenList)
+  const findStudentByRoll = async () => {
+    setIsSubmit(true);
+    let newStudenList = studentList.filter((item) => item.rollNo == rollNo);
+
+    console.log("dsdsstudent-", newStudenList);
     await setStudent(newStudenList);
-    console.log("new student-",student)
+    console.log("new student-", student);
   };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <VendorHeader name={"Ajay"} />
+      <VendorHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box
@@ -80,84 +78,128 @@ export default function IssueDevice() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                {detailsIndex===""&&<Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Title>Issue Device <Link to="/vendor-dashboard"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
-                   
-                  <Divider sx={{ my: 1 }} />
-                  <Grid container >
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={6} >
-                      <div style={{border: '2px solid #0b9e9e',padding: '35px',borderRadius: '8px'}}>
-                        <div className="form-group">
-                          <TextField
-                            id="outlined-basic"
-                            name="roll"
-                            label="Enter Roll no"
-                            variant="outlined"
-                            size="small"
-                            onChange={(e) => setRollNo(e.target.value)}
-                          />
+                {detailsIndex === "" && (
+                  <Paper
+                    sx={{ p: 2, display: "flex", flexDirection: "column" }}
+                  >
+                    <Title>
+                      Issue Device{" "}
+                      <Link to="/vendor-dashboard">
+                        {" "}
+                        <span style={{ float: "right" }}>
+                          <Button>Back</Button>
+                        </span>
+                      </Link>
+                    </Title>
+
+                    <Divider sx={{ my: 1 }} />
+                    <Grid container>
+                      <Grid item xs={3}></Grid>
+                      <Grid item xs={6}>
+                        <div
+                          style={{
+                            border: "2px solid #0b9e9e",
+                            padding: "35px",
+                            borderRadius: "8px",
+                          }}
+                        >
+                          <div className="form-group">
+                            <TextField
+                              id="outlined-basic"
+                              name="roll"
+                              label="Enter Roll no"
+                              variant="outlined"
+                              size="small"
+                              onChange={(e) => setRollNo(e.target.value)}
+                            />
+                          </div>
+                          <div>
+                            <Button
+                              variant="outlined"
+                              onClick={findStudentByRoll}
+                            >
+                              Search
+                            </Button>
+                          </div>
                         </div>
-                        <div>  
-                        <Button
-                            variant="outlined"
-                            onClick={findStudentByRoll}
-                          >
-                            Search
-                          </Button>
-                        </div>
-                      </div>
+                      </Grid>
+                      <Grid item xs={3}></Grid>
                     </Grid>
-                    <Grid item xs={3}></Grid>
-                  </Grid>
-                </Paper>}
-                {isSubmit&&detailsIndex===""&&<Paper sx={{ p: 2, mt:3, display: "flex", flexDirection: "column" }}>
-                  <Table size="small">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Dob</TableCell>
-                        <TableCell>Amount</TableCell>
-                        <TableCell>Roll No</TableCell>
-                        <TableCell>Address</TableCell>
-                        <TableCell align="right">Action</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                    {student.length==0&&<TableRow>
-                        <TableCell colSpan={6}><Alert severity="warning">Student Details Not available!</Alert></TableCell>
-                    </TableRow>}
-                      {student.map((row,key) => (
-                        <TableRow >
-                          <TableCell>{row.name}</TableCell>
-                          <TableCell>{row.dob}</TableCell>
-                          <TableCell>{row.amount}</TableCell>
-                          <TableCell>{row.roll_no}</TableCell>
-                          <TableCell>{row.StudentAddress}</TableCell>
-                          
-                          <TableCell align="right">
-                              <Button variant="outlined" onClick={()=>setDetailsIndex(key+1)}>Issue</Button>
-                          </TableCell>
+                  </Paper>
+                )}
+                {isSubmit && detailsIndex === "" && (
+                  <Paper
+                    sx={{
+                      p: 2,
+                      mt: 3,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Table size="small">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Name</TableCell>
+                          <TableCell>Dob</TableCell>
+                          <TableCell>Amount</TableCell>
+                          <TableCell>Roll No</TableCell>
+                          <TableCell>Address</TableCell>
+                          <TableCell align="right">Action</TableCell>
                         </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </Paper>}
+                      </TableHead>
+                      <TableBody>
+                        {student.length == 0 && (
+                          <TableRow>
+                            <TableCell colSpan={6}>
+                              <Alert severity="warning">
+                                Student Details Not available!
+                              </Alert>
+                            </TableCell>
+                          </TableRow>
+                        )}
+                        {student.map((row, key) => (
+                          <TableRow>
+                            <TableCell>{row.name}</TableCell>
+                            <TableCell>{row.dob}</TableCell>
+                            <TableCell>{row.amount}</TableCell>
+                            <TableCell>{row.roll_no}</TableCell>
+                            <TableCell>{row.StudentAddress}</TableCell>
 
-                {student.length!==0&&detailsIndex!=""&&<Paper sx={{ p: 2, mt:3, display: "flex", flexDirection: "column" }}>
+                            <TableCell align="right">
+                              <Button
+                                variant="outlined"
+                                onClick={() => setDetailsIndex(key + 1)}
+                              >
+                                Issue
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </Paper>
+                )}
 
-                <AssignDevice studentDetails={student[detailsIndex-1]} setDetailsIndex={setDetailsIndex}/> 
-                </Paper>}
-
-
-                </Grid>
+                {student.length !== 0 && detailsIndex != "" && (
+                  <Paper
+                    sx={{
+                      p: 2,
+                      mt: 3,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <AssignDevice
+                      studentDetails={student[0]}
+                      setDetailsIndex={setDetailsIndex}
+                    />
+                  </Paper>
+                )}
+              </Grid>
             </Grid>
-        
           </Container>
         </Box>
-        
       </main>
-     
     </ThemeProvider>
   );
 }

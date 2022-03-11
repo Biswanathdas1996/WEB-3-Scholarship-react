@@ -1,34 +1,37 @@
-import * as React from 'react';
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
+import * as React from "react";
+import Timeline from "@mui/lab/Timeline";
+import TimelineItem from "@mui/lab/TimelineItem";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineDot from "@mui/lab/TimelineDot";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import {ListItem,
+import {
+  ListItem,
   ListItemAvatar,
-  ListItemText,IconButton, Button} from '@mui/material';
+  ListItemText,
+  IconButton,
+  Button,
+} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Title from "../vendor/Title";
-import { Link } from 'react-router-dom';
-import AdminHeader from './AdminHeader';
+import { Link } from "react-router-dom";
+import AdminHeader from "./AdminHeader";
 const theme = createTheme();
 export default function AdminTransaction() {
   return (
-    
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AdminHeader name={"Ajay"} />
+      <AdminHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box
@@ -44,49 +47,103 @@ export default function AdminTransaction() {
           }}
         >
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-               <Title> Transaction History <Link to="/admin-dashboard"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
-              
-                <Timeline style={{alignItems:"baseline"}}>
-                  <TimelineItem>
-                      <TimelineSeparator>
-                        <TimelineDot color="success" />
-                        <TimelineConnector />
-                      </TimelineSeparator>
-                      <TimelineContent>
-                            <div style={{    height: '100px',border: '2px solid #28b8b8',padding:'10px',borderRadius: '5px',width: '300px',backgroundColor: '#fff',color: '#2c7070',fontFamily: 'ui-monospace'}}>
-                                          <div><span><b>Name:</b></span> User1</div>
-                                          <div><span><b>Amount:</b></span> 5000</div>
-                                          <div><span><b>Date:</b></span> 02/02/2022</div>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Title>
+                  {" "}
+                  Transaction History{" "}
+                  <Link to="/admin-dashboard">
+                    {" "}
+                    <span style={{ float: "right" }}>
+                      <Button>Back</Button>
+                    </span>
+                  </Link>
+                </Title>
 
-                                      </div>
-                      </TimelineContent>
+                <Timeline style={{ alignItems: "baseline" }}>
+                  <TimelineItem>
+                    <TimelineSeparator>
+                      <TimelineDot color="success" />
+                      <TimelineConnector />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <div
+                        style={{
+                          height: "100px",
+                          border: "2px solid #28b8b8",
+                          padding: "10px",
+                          borderRadius: "5px",
+                          width: "300px",
+                          backgroundColor: "#fff",
+                          color: "#2c7070",
+                          fontFamily: "ui-monospace",
+                        }}
+                      >
+                        <div>
+                          <span>
+                            <b>Name:</b>
+                          </span>{" "}
+                          User1
+                        </div>
+                        <div>
+                          <span>
+                            <b>Amount:</b>
+                          </span>{" "}
+                          5000
+                        </div>
+                        <div>
+                          <span>
+                            <b>Date:</b>
+                          </span>{" "}
+                          02/02/2022
+                        </div>
+                      </div>
+                    </TimelineContent>
                   </TimelineItem>
                   <TimelineItem>
                     <TimelineSeparator>
-                      <TimelineDot color="success"/>
+                      <TimelineDot color="success" />
                     </TimelineSeparator>
                     <TimelineContent>
-                          <div style={{    height: '100px',border: '2px solid #28b8b8',padding:'10px',borderRadius: '5px',width: '300px',backgroundColor: '#fff',color: '#2c7070',fontFamily: 'ui-monospace'}}>
-                                          <div><span><b>Name:</b></span> User1</div>
-                                          <div><span><b>Amount:</b></span> 5000</div>
-                                          <div><span><b>Date:</b></span> 02/02/2022</div>
-
-                          </div> 
+                      <div
+                        style={{
+                          height: "100px",
+                          border: "2px solid #28b8b8",
+                          padding: "10px",
+                          borderRadius: "5px",
+                          width: "300px",
+                          backgroundColor: "#fff",
+                          color: "#2c7070",
+                          fontFamily: "ui-monospace",
+                        }}
+                      >
+                        <div>
+                          <span>
+                            <b>Name:</b>
+                          </span>{" "}
+                          User1
+                        </div>
+                        <div>
+                          <span>
+                            <b>Amount:</b>
+                          </span>{" "}
+                          5000
+                        </div>
+                        <div>
+                          <span>
+                            <b>Date:</b>
+                          </span>{" "}
+                          02/02/2022
+                        </div>
+                      </div>
                     </TimelineContent>
                   </TimelineItem>
-
                 </Timeline>
-              
+              </Grid>
             </Grid>
-          </Grid>
           </Container>
-          </Box>
-        
-        </main>
-       
-      </ThemeProvider>
-    
+        </Box>
+      </main>
+    </ThemeProvider>
   );
 }

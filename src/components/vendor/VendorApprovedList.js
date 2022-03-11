@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -13,24 +13,22 @@ import VendorHeader from "./VendorHeader";
 
 const theme = createTheme();
 export default function VendorApprovedList() {
-  const [vendorData,setVendorData]=useState([])
+  const [vendorData, setVendorData] = useState([]);
   useEffect(() => {
     fetchVendorData();
   }, []);
 
   async function fetchVendorData() {
     const vendorList = await contract.methods.getListOfVendors().call();
-    const pendingVendor=vendorList.filter(item=>item.status===true)
+    const pendingVendor = vendorList.filter((item) => item.status === true);
     console.log("vendor", vendorList);
-    setVendorData(pendingVendor)
+    setVendorData(pendingVendor);
   }
 
   return (
-
-
-<ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <VendorHeader name={"Ajay"} />
+      <VendorHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box
@@ -49,16 +47,17 @@ export default function VendorApprovedList() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <VendorData title="Vendor Approve List" vendorData={vendorData} />
+                  <VendorData
+                    title="Vendor Approve List"
+                    vendorData={vendorData}
+                    fetchVendorData={fetchVendorData}
+                  />
                 </Paper>
               </Grid>
             </Grid>
-        
           </Container>
         </Box>
-        
       </main>
-     
     </ThemeProvider>
   );
 }

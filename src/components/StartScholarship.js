@@ -96,13 +96,11 @@ const FormUI = () => {
         <center>
           <p>
             <br />
-            <h5 style={{ color: "grey", fontSize: 15 }}>
-              Current account: {account && account[0]}
-            </h5>
+
             <h1>
               Current contract balance{" "}
               <b style={{ color: "#ff8f00" }}>
-                {balance / 1000000000000000000} ETH
+                {parseFloat(balance / 1000000000000000000).toFixed(2)} ETH
               </b>
             </h1>
           </p>
@@ -131,7 +129,7 @@ const FormUI = () => {
                 {({ touched, errors, isSubmitting }) => (
                   <Form>
                     <div className="form-group">
-                      <label htmlFor="number">Amount (ETH)</label>
+                      <label htmlFor="number">Amount (Wei)</label>
                       <Field
                         type="number"
                         name="number"
@@ -153,7 +151,7 @@ const FormUI = () => {
                       <input
                         class="btn btn-default btn-primary"
                         type="submit"
-                        value={start ? "Please wait ..." : "Recharge"}
+                        value={start ? "Please wait ..." : "Add to contract"}
                         disabled={start}
                       />
                     </span>

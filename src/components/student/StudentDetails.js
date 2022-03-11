@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -9,39 +9,36 @@ import Paper from "@mui/material/Paper";
 import VendorData from "./StudentData";
 import SideBar from "../common/SideBar";
 import contract from "../../contract/Lottery";
-import {Link} from 'react-router-dom';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Title from '../vendor/Title';
+import { Link } from "react-router-dom";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Title from "../vendor/Title";
 import { Alert, Button, Divider } from "@mui/material";
 import StudentTransaction from "./StudentTransaction";
 import StudentHeader from "./StudentHeader";
 import IssuedStudentData from "../vendor/IssuedStudentData";
 const theme = createTheme();
 export default function StudentDetails() {
-  const [studentList,setStudentList]=useState([])
-  const [studentData,setStudentData]=useState([])
+  const [studentList, setStudentList] = useState([]);
+  const [studentData, setStudentData] = useState([]);
   useEffect(() => {
     fetchStudentData();
   }, []);
 
-
   async function fetchStudentData() {
     const students = await contract.methods.getListOfStudents().call();
-    setStudentList(students)
+    setStudentList(students);
     setStudentData(students[0]);
     console.log("students", students);
   }
 
   return (
-
-
-<ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <StudentHeader name={"Ajay"} />
+      <StudentHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box
@@ -60,48 +57,56 @@ export default function StudentDetails() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                <Title>Student Details <Link to="/"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
-                  
+                  <Title>
+                    Student Details{" "}
+                    <Link to="/">
+                      {" "}
+                      <span style={{ float: "right" }}>
+                        <Button>Back</Button>
+                      </span>
+                    </Link>
+                  </Title>
+
                   <Divider sx={{ my: 1 }} />
-                <Table size="small">
-                  <TableBody>
-                      <TableRow >
+                  <Table size="small">
+                    <TableBody>
+                      <TableRow>
                         <TableCell>Name:</TableCell>
                         <TableCell>{studentData.name}</TableCell>
                       </TableRow>
-                      <TableRow >
+                      <TableRow>
                         <TableCell>Date Of birth:</TableCell>
                         <TableCell>{studentData.dob}</TableCell>
                       </TableRow>
-                      <TableRow >
+                      <TableRow>
                         <TableCell>Roll No:</TableCell>
                         <TableCell>{studentData.rollNo}</TableCell>
                       </TableRow>
-                      <TableRow >
+                      <TableRow>
                         <TableCell>Amount:</TableCell>
                         <TableCell>{studentData.amount}</TableCell>
                       </TableRow>
-                      <TableRow >
+                      <TableRow>
                         <TableCell>Otp:</TableCell>
                         <TableCell>{studentData.otp}</TableCell>
                       </TableRow>
-                  
-                  </TableBody>
+                    </TableBody>
                   </Table>
                 </Paper>
               </Grid>
-              <Grid item  xs={12}>
+              <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                    <IssuedStudentData title="Iussed Device List" studentData={studentList} back_url=""/>
+                  <IssuedStudentData
+                    title="Iussed Device List"
+                    studentData={studentList}
+                    back_url=""
+                  />
                 </Paper>
               </Grid>
             </Grid>
-        
           </Container>
         </Box>
-        
       </main>
-     
     </ThemeProvider>
   );
 }

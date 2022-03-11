@@ -1,6 +1,6 @@
 import web3 from "../web3";
 
-const address = "0x5dF92e736E57900Bc782bCACB339bC72fDE489E6";
+const address = "0x41344897f7b438F01CD1D9C8E570bf750E917D27";
 
 const abi = [
   {
@@ -8,6 +8,7 @@ const abi = [
     inputs: [{ name: "", type: "uint256" }],
     name: "students",
     outputs: [
+      { name: "slNo", type: "uint256" },
       { name: "name", type: "string" },
       { name: "rollNo", type: "uint256" },
       { name: "dob", type: "string" },
@@ -43,6 +44,7 @@ const abi = [
     outputs: [
       {
         components: [
+          { name: "slNo", type: "uint256" },
           { name: "name", type: "string" },
           { name: "rollNo", type: "uint256" },
           { name: "dob", type: "string" },
@@ -113,6 +115,7 @@ const abi = [
     outputs: [
       {
         components: [
+          { name: "slNo", type: "uint256" },
           { name: "name", type: "string" },
           { name: "registrationNo", type: "string" },
           { name: "vendorAddress", type: "string" },
@@ -190,6 +193,7 @@ const abi = [
     inputs: [{ name: "", type: "uint256" }],
     name: "vendors",
     outputs: [
+      { name: "slNo", type: "uint256" },
       { name: "name", type: "string" },
       { name: "registrationNo", type: "string" },
       { name: "vendorAddress", type: "string" },

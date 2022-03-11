@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -10,24 +10,21 @@ import IssuedStudentData from "../vendor/IssuedStudentData";
 import AdminHeader from "./AdminHeader";
 const theme = createTheme();
 export default function AllIssuedList() {
-  const [studentList,setStudentList]=useState([])
+  const [issueDevice, setIssueDevice] = useState([]);
   useEffect(() => {
     fetchStudentData();
   }, []);
 
-
   async function fetchStudentData() {
-    const students = await contract.methods.getListOfStudents().call();
-    setStudentList(students)
-    console.log("students", students);
+    const deviceIssue = await contract.methods.getListOfDeviceIssue().call();
+    setIssueDevice(deviceIssue);
+    console.log("deviceIssue", deviceIssue);
   }
 
   return (
-
-
-<ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AdminHeader name={"Ajay"} />
+      <AdminHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box
@@ -46,16 +43,17 @@ export default function AllIssuedList() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <IssuedStudentData title="All Iussed Device List" studentData={studentList} back_url={"/admin-dashboard"}/>
+                  <IssuedStudentData
+                    title="All Iussed Device List"
+                    issueDevice={issueDevice}
+                    back_url={"/admin-dashboard"}
+                  />
                 </Paper>
               </Grid>
             </Grid>
-        
           </Container>
         </Box>
-        
       </main>
-     
     </ThemeProvider>
   );
 }

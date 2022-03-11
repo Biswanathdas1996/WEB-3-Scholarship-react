@@ -6,13 +6,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import VendorData from "./StudentData";
+import VendorData from "./IssuedStudentData";
 import SideBar from "../common/SideBar";
 import contract from "../../contract/Lottery";
-import StudentData from "./StudentData";
-import AdminHeader from "../admin/AdminHeader";
+import StudentData from "./IssuedStudentData";
+import IssuedStudentData from "./IssuedStudentData";
+import VendorHeader from "./VendorHeader";
 const theme = createTheme();
-export default function VendorIssuedList() {
+export default function StudentList() {
   const [studentList,setStudentList]=useState([])
   useEffect(() => {
     fetchStudentData();
@@ -30,7 +31,7 @@ export default function VendorIssuedList() {
 
 <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AdminHeader name={"Ajay"} />
+      <VendorHeader name={"Ajay"} />
       <main>
         {/* Hero unit */}
         <Box
@@ -49,7 +50,7 @@ export default function VendorIssuedList() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <StudentData title="Student List" studentData={studentList} />
+                  <IssuedStudentData title="Iussed Device List" studentData={studentList} />
                 </Paper>
               </Grid>
             </Grid>

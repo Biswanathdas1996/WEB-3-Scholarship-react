@@ -13,6 +13,7 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import VendorDashboard from "./components/vendor/VendorDashboard";
 import VendorApprovedList from "./components/vendor/VendorApprovedList";
 import StudentList from "./components/student/StudentList";
+import VendorIssuedList from "./components/vendor/VendorIssuedList";
 export const AccountContest = React.createContext("light");
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/vendor-pending" element={<VendorPendingList />} />
         <Route path="/vendor-approved" element={<VendorApprovedList />} />
         <Route path="/issue-device" element={<IssueDevice />} />
+        <Route path="/vendor-issued-list" element={<VendorIssuedList />} />
         <Route path="/assign-device/:id" element={<AssignDevice />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from '../vendor/Title';
+import Title from './Title';
 import { Button, Divider } from '@mui/material';
 import Alert from '@mui/material/Alert';
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,10 +15,10 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function StudentData({title,studentData}) {
+export default function IssuedStudentData({title,studentData}) {
   return (
     <React.Fragment>
-      <Title>{title}<Link to="/admin-dashboard"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
+      <Title>{title}<Link to="/vendor-dashboard"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
       <Divider sx={{ my: 1 }} />
       
       <Table size="small">
@@ -27,6 +27,7 @@ export default function StudentData({title,studentData}) {
             <TableCell>Name</TableCell>
             <TableCell>DOB</TableCell>
             <TableCell>Roll No</TableCell>
+            <TableCell>IMEI No</TableCell>
             <TableCell>Amount</TableCell>
           </TableRow>
         </TableHead>
@@ -40,6 +41,7 @@ export default function StudentData({title,studentData}) {
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.dob}</TableCell>
               <TableCell>{row.rollNo}</TableCell>
+              <TableCell>{row.imei}</TableCell>
               <TableCell>{row.amount}</TableCell>
             </TableRow>
           ))}

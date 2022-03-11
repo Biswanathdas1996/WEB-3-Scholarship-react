@@ -52,7 +52,7 @@ export default function AssignDevice({studentDetails,setDetailsIndex}) {
         
             <Grid item xs={12}>
             
-                <Title>Assign Device</Title>
+                <Title>Assign Device <span style={{float:'right'}}><Button onClick={()=>setDetailsIndex("")}>Back</Button></span></Title>
                 <Divider sx={{ my: 1 }} />
                 <Table size="small">
                   <TableBody>
@@ -169,7 +169,7 @@ export default function AssignDevice({studentDetails,setDetailsIndex}) {
                 </Grid>
              
 
-                <Button onClick={()=>setDetailsIndex("")}>Back</Button>
+               
               
             </Grid>
           

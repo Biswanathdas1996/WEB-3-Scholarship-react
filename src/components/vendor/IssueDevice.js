@@ -81,7 +81,8 @@ export default function IssueDevice() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 {detailsIndex===""&&<Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Title>Issue Device</Title>
+                  <Title>Issue Device <Link to="/vendor-dashboard"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
+                   
                   <Divider sx={{ my: 1 }} />
                   <Grid container >
                     <Grid item xs={3}></Grid>

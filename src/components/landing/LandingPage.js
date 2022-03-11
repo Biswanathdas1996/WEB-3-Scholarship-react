@@ -35,8 +35,7 @@ export default function LandingPage() {
           ? theme.palette.grey[100]
           : theme.palette.grey[900],
             pt: 8,
-            pb: 6,
-            overflow: "auto"
+            pb: 6
           }}
         >
           <Container maxWidth="sm">

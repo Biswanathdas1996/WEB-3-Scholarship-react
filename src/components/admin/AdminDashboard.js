@@ -25,7 +25,7 @@ export default function AdminDashboard() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AdminHeader name="Admin" />
+      <AdminHeader />
       <main>
         {/* Hero unit */}
         <Box

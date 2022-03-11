@@ -36,7 +36,6 @@ export default function LandingPage() {
           : theme.palette.grey[900],
             pt: 8,
             pb: 6,
-            height: "100vh",
             overflow: "auto"
           }}
         >

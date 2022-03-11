@@ -43,15 +43,7 @@ export default function VendorDashboard() {
           container
           spacing={3}
         >
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-           <Link to="/issue-device" style={{textDecoration:"none"}}> <DataCard name="Issue Device" icon={<PeopleIcon />} /></Link>
-          </Grid>
+         
           <Grid
             item
             xl={3}
@@ -59,7 +51,7 @@ export default function VendorDashboard() {
             sm={6}
             xs={12}
           >
-            <Link to="/vendor-issued-list" style={{textDecoration:"none"}}><DataCard name="Issued Device" icon={<PeopleIcon />} count="0"/></Link>
+            <DataCard name="Total Issued Device" icon={<PeopleIcon />} count="0"/>
           </Grid>
 
           <Grid
@@ -69,7 +61,7 @@ export default function VendorDashboard() {
             sm={6}
             xs={12}
           >
-            <Link to="/vendor-transaction" style={{textDecoration:"none"}}><DataCard name="Transaction" icon={<AccountBalanceWalletIcon />} /></Link>
+            <DataCard name="Wallet Balance" icon={<AccountBalanceWalletIcon />} count={500} />
           </Grid>
          
        

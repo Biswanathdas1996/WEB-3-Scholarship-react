@@ -17,6 +17,7 @@ import StudentDetails from "./components/student/StudentDetails";
 import VendorIssuedList from "./components/vendor/VendorIssuedList";
 import VendorTransaction from "./components/vendor/VendorTransaction";
 import AdminTransaction from "./components/admin/AdminTransaction";
+import AllIssuedList from "./components/admin/AllIssuedList";
 export const AccountContest = React.createContext("light");
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/student-list" element={<StudentList />} />
         <Route path="/student-details" element={<StudentDetails />} />
+        <Route path="/all-issued-device" element={<AllIssuedList />} />
       </Routes>
     </AccountContest.Provider>
   );

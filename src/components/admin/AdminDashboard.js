@@ -51,7 +51,7 @@ export default function AdminDashboard() {
             xl={3}
             xs={12}
           >
-           <Link to="/student-list" style={{textDecoration:"none"}}> <DataCard name="Student List" icon={<PeopleIcon />} /></Link>
+            <DataCard name="Total Student" icon={<PeopleIcon />} count="1" />
           </Grid>
           <Grid
             item
@@ -60,7 +60,7 @@ export default function AdminDashboard() {
             sm={6}
             xs={12}
           >
-            <Link to="/vendor-pending" style={{textDecoration:"none"}}><DataCard name="Pending Vendor List" icon={<PeopleIcon />} count="0"/></Link>
+            <DataCard name="Total Pending Vendor" icon={<PeopleIcon />} count="0"/>
           </Grid>
           <Grid
             item
@@ -69,7 +69,7 @@ export default function AdminDashboard() {
             sm={6}
             xs={12}
           >
-            <Link to="/vendor-approved" style={{textDecoration:"none"}}><DataCard name="Approved Vendor List" icon={<PeopleIcon />} count="0"/></Link>
+            <DataCard name="Total Approved Vendor" icon={<PeopleIcon />} count="0"/>
           </Grid>
 
           <Grid
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
             sm={6}
             xs={12}
           >
-            <Link to="/all-transaction" style={{textDecoration:"none"}}><DataCard name="Transaction" icon={<AccountBalanceWalletIcon />} /></Link>
+            <DataCard name="Total Issued Device" icon={<AccountBalanceWalletIcon />} count="2" />
           </Grid>
          
        

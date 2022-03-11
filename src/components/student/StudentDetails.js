@@ -19,6 +19,7 @@ import Title from '../vendor/Title';
 import { Alert, Button, Divider } from "@mui/material";
 import StudentTransaction from "./StudentTransaction";
 import StudentHeader from "./StudentHeader";
+import IssuedStudentData from "../vendor/IssuedStudentData";
 const theme = createTheme();
 export default function StudentDetails() {
   const [studentList,setStudentList]=useState([])
@@ -91,7 +92,7 @@ export default function StudentDetails() {
               </Grid>
               <Grid item  xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                    <StudentTransaction/>
+                    <IssuedStudentData title="Iussed Device List" studentData={studentList} back_url=""/>
                 </Paper>
               </Grid>
             </Grid>

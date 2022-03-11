@@ -15,17 +15,16 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function IssuedStudentData({title,studentData}) {
+export default function IssuedStudentData({title,studentData,back_url}) {
   return (
     <React.Fragment>
-      <Title>{title}<Link to="/vendor-dashboard"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
+      <Title>{title}{back_url===""?"":<Link to={back_url}> <span style={{float:'right'}}><Button>Back</Button></span></Link>}</Title>
       <Divider sx={{ my: 1 }} />
       
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>DOB</TableCell>
             <TableCell>Roll No</TableCell>
             <TableCell>IMEI No</TableCell>
             <TableCell>Amount</TableCell>
@@ -39,7 +38,6 @@ export default function IssuedStudentData({title,studentData}) {
           {studentData.map((row,key) => (
             <TableRow key={key}>
               <TableCell>{row.name}</TableCell>
-              <TableCell>{row.dob}</TableCell>
               <TableCell>{row.rollNo}</TableCell>
               <TableCell>{row.imei}</TableCell>
               <TableCell>{row.amount}</TableCell>

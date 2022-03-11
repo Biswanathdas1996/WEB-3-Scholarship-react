@@ -14,7 +14,7 @@ import contract from "../../contract/Lottery";
 import { AccountContest } from "../../App";
 import swal from "sweetalert";
 
-export default function VendorData({ title, vendorData }) {
+export default function VendorData({ title, vendorData, fetchVendorData }) {
   const account = useContext(AccountContest);
 
   const [start, setStart] = useState(false);
@@ -32,6 +32,32 @@ export default function VendorData({ title, vendorData }) {
         swal("Registration done !", {
           icon: "success",
         });
+        fetchVendorData();
+        setStart(false);
+      })
+      .catch((error) => {
+        console.log("error-->", error);
+        swal(error.message, {
+          icon: "error",
+        });
+        setStart(false);
+      });
+  };
+
+  const deActivateVendor = async (index) => {
+    setStart(true);
+    await contract.methods
+      .rejectVendor(index)
+      .send({
+        from: account[0],
+        value: 0,
+      })
+      .then((data) => {
+        console.log("=>", data);
+        swal("Registration done !", {
+          icon: "success",
+        });
+        fetchVendorData();
         setStart(false);
       })
       .catch((error) => {
@@ -45,6 +71,8 @@ export default function VendorData({ title, vendorData }) {
 
   return (
     <React.Fragment>
+      {start && <LinearProgress />}
+      <br />
       <Title>
         {title}{" "}
         <Link to="/admin-dashboard">
@@ -93,8 +121,12 @@ export default function VendorData({ title, vendorData }) {
                     Approve
                   </Button>
                 ) : (
-                  <Button variant="contained" color="error">
-                    Reject
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => deActivateVendor(key)}
+                  >
+                    In-active
                   </Button>
                 )}
               </TableCell>

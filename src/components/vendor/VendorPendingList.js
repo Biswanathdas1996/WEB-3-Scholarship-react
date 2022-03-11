@@ -50,6 +50,7 @@ export default function VendorPendingList() {
                   <VendorData
                     title="Vendor Pending List"
                     vendorData={vendorData}
+                    fetchVendorData={fetchVendorData}
                   />
                 </Paper>
               </Grid>

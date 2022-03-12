@@ -5,12 +5,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Alert from "@mui/material/Alert";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import Table from "react-bootstrap/Table";
 import Title from "../vendor/Title";
 import { Button, Divider, TextField } from "@mui/material";
 import contract from "../../contract/Lottery";
@@ -124,47 +119,59 @@ export default function IssueDevice() {
                       flexDirection: "column",
                     }}
                   >
-                    <Table size="small">
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Name</TableCell>
-                          <TableCell>Dob</TableCell>
-                          <TableCell>Amount</TableCell>
-                          <TableCell>Roll No</TableCell>
-                          <TableCell>Address</TableCell>
-                          <TableCell align="right">Action</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {student.length == 0 && (
-                          <TableRow>
-                            <TableCell colSpan={6}>
-                              <Alert severity="warning">
-                                Student Details Not available!
-                              </Alert>
-                            </TableCell>
-                          </TableRow>
-                        )}
-                        {student.map((row, key) => (
-                          <TableRow>
-                            <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.dob}</TableCell>
-                            <TableCell>{row.amount}</TableCell>
-                            <TableCell>{row.roll_no}</TableCell>
-                            <TableCell>{row.StudentAddress}</TableCell>
 
-                            <TableCell align="right">
-                              <Button
-                                variant="outlined"
-                                onClick={() => setDetailsIndex(key + 1)}
-                              >
-                                Issue
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
+<Table striped   hover style={{backgroundColor:"#01987a",color:"#fff"}}>
+      <thead style={{backgroundColor:"#0a463a",color:"#fff"}}>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Dob</th>
+          <th>Amount</th>
+          <th>Roll No</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody style={{backgroundColor:"#01987a",color:"#fff"}}>
+
+      {student.length === 0 && (
+            <tr>
+              <td colSpan={7} align="center">
+              Student Details Not available!
+              </td>
+            </tr>
+          )}
+
+        {student &&
+          student?.map((row, key)=> {
+            return (
+              <tr key={key}>
+              <td>{key+1}</td>
+              <td>{row.name}</td>
+              <td>{row.dob}</td>
+              <td>{row.amount}</td>
+              <td>{row.roll_no}</td>
+              <td>{row.StudentAddress}</td>
+
+              <td align="right">
+                <Button
+                  variant="contained"
+                  style={{backgroundColor:"#19662b"}}
+                  onClick={() => setDetailsIndex(key + 1)}
+                >
+                  Issue
+                </Button>
+              </td>
+              </tr>
+
+            );
+          })}
+      </tbody>
+      </Table>
+
+
+
+                    
                   </Paper>
                 )}
 

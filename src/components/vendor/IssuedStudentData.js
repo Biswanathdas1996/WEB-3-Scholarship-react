@@ -1,12 +1,7 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import Table from "react-bootstrap/Table";
 import Title from "./Title";
-import { Divider } from "@mui/material";
-import Alert from "@mui/material/Alert";
+
 
 
 
@@ -16,41 +11,49 @@ export default function IssuedStudentData({ title, issueDevice, back_url }) {
       <Title>
         {title}
       </Title>
-      <Divider sx={{ my: 1 }} />
 
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Vendor Name</TableCell>
-            <TableCell>Roll No</TableCell>
-            <TableCell>IMEI No</TableCell>
-            <TableCell>Amount</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {issueDevice?.length === 0 && (
-            <TableRow>
-              <TableCell colSpan={6}>
-                <Alert severity="warning">No Vendor available!</Alert>
-              </TableCell>
-            </TableRow>
+      <Table striped   hover style={{backgroundColor:"#01987a",color:"#fff"}}>
+      <thead style={{backgroundColor:"#0a463a",color:"#fff"}}>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Roll No</th>
+          <th>IMEI No</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody style={{backgroundColor:"#01987a",color:"#fff"}}>
+
+      {issueDevice.length === 0 && (
+            <tr>
+              <td colSpan={5} align="center">
+                No Vendor available!
+              </td>
+            </tr>
           )}
 
-          {issueDevice?.map((row, key) => (
-            <TableRow key={key}>
-              <TableCell>{row?.name}</TableCell>
-              <TableCell>{row?.vendorName}</TableCell>
-              <TableCell>{row?.rollNo}</TableCell>
-              <TableCell>{row?.deviceIMEI}</TableCell>
-              <TableCell>
-                {parseFloat(row?.amount / 1000000000000000000).toFixed(2)}
-                <b> ETH</b>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        {issueDevice &&
+          issueDevice?.map((row, key)=> {
+            return (
+              <tr key={key}>
+                <td>{key+1}</td>
+                <td>{row.name}</td>
+                <td>{row.rollNo}</td>
+                <td>{row.deviceIMEI}</td>
+                <td>
+                  {parseFloat(row.amount / 1000000000000000000).toFixed(2)}
+                  <b> ETH</b>
+                </td>
+
+
+              </tr>
+
+            );
+          })}
+      </tbody>
       </Table>
+
+     
     </React.Fragment>
   );
 }

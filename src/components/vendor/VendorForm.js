@@ -159,8 +159,7 @@ const VendorForm = ({ submitForm }) => {
                         type="submit"
                         value="Sign Up"
                       />
-                      <Link to="/"> <span style={{float:'right'}}><Button color="primary">Back</Button></span></Link>
-                    </span>
+                     </span>
                   </Form>
                 )}
               </Formik>

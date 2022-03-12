@@ -13,7 +13,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
   },
   card: {
     maxWidth: 900,
-    minWidth:400,
+    minWidth: 400,
     borderRadius: 5,
     margin: "1rem",
   },
@@ -26,7 +26,7 @@ const VendorSchema = Yup.object().shape({
   pincode: Yup.number().required("Pincode no is required"),
 });
 
-const VendorForm = ({ submitForm }) => {
+const VendorForm = ({ submitForm, start }) => {
   const classes = useStyles();
 
   const saveData = (value) => {
@@ -50,12 +50,10 @@ const VendorForm = ({ submitForm }) => {
     <div>
       <Card className={classes.card}>
         <Grid container>
-         
           <Grid item lg={12} md={12} sm={12} xs={12}>
-            
-              <Typography sx={{ m: 2 }} component="h1" variant="h5">
-                Vendor Registration
-              </Typography>
+            <Typography sx={{ m: 2 }} component="h1" variant="h5">
+              Vendor Registration
+            </Typography>
             <div
               className="p-8 h-full"
               style={{ justifyContent: "center", padding: "20px" }}
@@ -157,9 +155,10 @@ const VendorForm = ({ submitForm }) => {
                       <input
                         className="btn btn-default btn-primary"
                         type="submit"
-                        value="Sign Up"
+                        disabled={start}
+                        value={start ? "Please wait" : "Submit"}
                       />
-                     </span>
+                    </span>
                   </Form>
                 )}
               </Formik>

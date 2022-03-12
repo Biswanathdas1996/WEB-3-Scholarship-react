@@ -69,7 +69,7 @@ export default function VendorData({
 
   return (
     <React.Fragment>
-      {(start || pending) && <LinearProgress />}
+      {(start || pending) && <LinearProgress color="secondary" />}
       <Title>{title}</Title>
       <Table
         striped

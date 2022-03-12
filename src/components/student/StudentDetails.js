@@ -48,7 +48,7 @@ export default function StudentDetails() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <StudentHeader name={""} />
-      {start && <LinearProgress />}
+      {start && <LinearProgress color="secondary" />}
       <main>
         {/* Hero unit */}
         <Box

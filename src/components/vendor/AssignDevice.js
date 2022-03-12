@@ -6,11 +6,20 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import Title from "./Title";
-import { Button, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import {
+  Button,
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import * as Yup from "yup";
 import swal from "sweetalert";
 import contract from "../../contract/Lottery";
 import { AccountContest } from "../../App";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const AssignDeviceSchema = Yup.object().shape({
   otp: Yup.string().required("Otp is required"),
@@ -24,7 +33,7 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
   const [start, setStart] = useState(false);
 
   const saveData = (value) => {
-    const { otp, imei, amount } = value;
+    const { otp, imei, amount, remark } = value;
     console.log(value);
     swal({
       title: "Are you sure?",
@@ -34,15 +43,15 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        submitForm(imei, otp, amount);
+        submitForm(imei, otp, amount, remark);
       }
     });
   };
 
-  const submitForm = async (deviceIMEI, otp, amount) => {
+  const submitForm = async (deviceIMEI, otp, amount, remark) => {
     setStart(true);
     await contract.methods
-      .issueNewDevice(deviceIMEI, studentDetails.slNo, otp, 0, amount)
+      .issueNewDevice(deviceIMEI, studentDetails.slNo, otp, 0, amount, remark)
       .send({
         from: account[0],
         value: 0,
@@ -65,6 +74,8 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
 
   return (
     <>
+      {start && <LinearProgress color="secondary" />}
+
       <Grid item xs={12}>
         <Title>
           Assign Device{" "}
@@ -73,8 +84,8 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
           </span>
         </Title>
         <Divider sx={{ my: 1 }} />
-        
-        <List style={{with:"50%",align:"right",marginLeft: "30%"}}>
+
+        <List style={{ with: "50%", align: "right", marginLeft: "30%" }}>
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>Name: </ListItemIcon>
@@ -95,12 +106,17 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton>
-              <ListItemIcon>Amount: </ListItemIcon>
-              <ListItemText primary={studentDetails.amount} />
+              <ListItemIcon>Available Amount: </ListItemIcon>
+              <ListItemText
+                primary={
+                  parseFloat(
+                    studentDetails?.amount / 1000000000000000000
+                  ).toFixed(2) + " ETH"
+                }
+              />
             </ListItemButton>
           </ListItem>
         </List>
-        
 
         <Grid item xs={12} sx={{ my: 1 }}>
           <div
@@ -108,7 +124,6 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
             style={{
               marginLeft: "30%",
               width: 400,
-              border: "2px solid #0b9e9e",
               padding: "35px",
               borderRadius: "8px",
             }}
@@ -118,6 +133,7 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
                 otp: "",
                 imei: "",
                 amount: "",
+                remark: "",
               }}
               validationSchema={AssignDeviceSchema}
               onSubmit={(values, { setSubmitting }) => {
@@ -172,7 +188,7 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
                       type="text"
                       name="amount"
                       autoComplete="flase"
-                      placeholder="Enter IMEI No"
+                      placeholder="Enter amount"
                       className={`form-control text-muted ${
                         touched.amount && errors.amount ? "is-invalid" : ""
                       }`}
@@ -181,6 +197,25 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
                     <ErrorMessage
                       component="div"
                       name="amount"
+                      className="invalid-feedback"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="name">Remark</label>
+                    <Field
+                      type="text"
+                      name="remark"
+                      autoComplete="flase"
+                      placeholder="Enter remark"
+                      className={`form-control text-muted ${
+                        touched.remark && errors.remark ? "is-invalid" : ""
+                      }`}
+                    />
+
+                    <ErrorMessage
+                      component="div"
+                      name="remark"
                       className="invalid-feedback"
                     />
                   </div>

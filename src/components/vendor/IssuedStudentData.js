@@ -6,7 +6,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 export default function IssuedStudentData({ title, issueDevice, start }) {
   return (
     <React.Fragment>
-      {start && <LinearProgress />}
+      {start && <LinearProgress color="secondary" />}
       <Title>{title}</Title>
 
       <Table
@@ -23,13 +23,14 @@ export default function IssuedStudentData({ title, issueDevice, start }) {
             <th>Roll No</th>
             <th>IMEI No</th>
             <th>Amount</th>
+            <th>Remark</th>
           </tr>
         </thead>
         <tbody style={{ backgroundColor: "rgb(245 245 245)", color: "black" }}>
           {!start && issueDevice.length === 0 && (
             <tr>
-              <td colSpan={5} align="center">
-                No Vendor available!
+              <td colSpan={7} align="center">
+                No data available!
               </td>
             </tr>
           )}
@@ -43,10 +44,12 @@ export default function IssuedStudentData({ title, issueDevice, start }) {
                   <td>{row?.vendorName}</td>
                   <td>{row?.rollNo}</td>
                   <td>{row?.deviceIMEI}</td>
+
                   <td>
                     {parseFloat(row?.amount / 1000000000000000000).toFixed(2)}
                     <b> ETH</b>
                   </td>
+                  <td>{row?.remark}</td>
                 </tr>
               );
             })}

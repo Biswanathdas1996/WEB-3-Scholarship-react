@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   card: {
     maxWidth: 900,
-    minWidth:400,
+    minWidth: 400,
     borderRadius: 5,
     margin: "1rem",
   },
@@ -21,7 +21,7 @@ const LoginSchema = Yup.object().shape({
   dob: Yup.string().trim().required("Date of Birth is required"),
 });
 
-const FormUI = ({ submitForm }) => {
+const FormUI = ({ submitForm, start }) => {
   const classes = useStyles();
 
   const saveData = (value) => {
@@ -44,11 +44,10 @@ const FormUI = ({ submitForm }) => {
     <div>
       <Card className={classes.card}>
         <Grid container>
-         
           <Grid item lg={12} md={12} sm={12} xs={12}>
-              <Typography sx={{ m: 2 ,mb:0}} component="h1" variant="h5">
-                Student Registration
-              </Typography>
+            <Typography sx={{ m: 2, mb: 0 }} component="h1" variant="h5">
+              Student Registration
+            </Typography>
             <div
               className="p-4 h-full"
               style={{ justifyContent: "center", padding: "20px" }}
@@ -125,14 +124,13 @@ const FormUI = ({ submitForm }) => {
                       />
                     </div>
 
-                    
-                    <span className="form-group" >
+                    <span className="form-group">
                       <input
                         className="btn btn-default btn-primary"
                         type="submit"
-                        value="Register"
+                        disabled={start}
+                        value={start ? "Please wait" : "Submit"}
                       />
-                      
                     </span>
                   </Form>
                 )}

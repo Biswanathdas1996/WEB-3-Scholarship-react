@@ -6,7 +6,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 export default function StudentData({ title, studentData, start }) {
   return (
     <React.Fragment>
-      {start && <LinearProgress />}
+      {start && <LinearProgress color="secondary" />}
       <Title>{title}</Title>
 
       <Table striped hover>

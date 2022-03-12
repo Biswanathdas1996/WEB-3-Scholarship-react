@@ -1,6 +1,6 @@
 import web3 from "../web3";
 
-const address = "0x41344897f7b438F01CD1D9C8E570bf750E917D27";
+const address = "0x8c44f7139951E25242C538331DABdf023a39A480";
 
 const abi = [
   {
@@ -20,21 +20,6 @@ const abi = [
     ],
     payable: false,
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      { name: "deviceIMEI", type: "string" },
-      { name: "studentIndex", type: "uint256" },
-      { name: "otp", type: "uint256" },
-      { name: "vendorIndex", type: "uint256" },
-      { name: "amount", type: "uint256" },
-    ],
-    name: "issueNewDevice",
-    outputs: [],
-    payable: true,
-    stateMutability: "payable",
     type: "function",
   },
   {
@@ -68,9 +53,12 @@ const abi = [
     name: "deviceIssue",
     outputs: [
       { name: "name", type: "string" },
+      { name: "vendorName", type: "string" },
+      { name: "vendorIndex", type: "uint256" },
       { name: "rollNo", type: "uint256" },
       { name: "deviceIMEI", type: "string" },
       { name: "amount", type: "uint256" },
+      { name: "remark", type: "string" },
     ],
     payable: false,
     stateMutability: "view",
@@ -94,6 +82,22 @@ const abi = [
       { name: "pincode", type: "uint256" },
     ],
     name: "registerVendor",
+    outputs: [],
+    payable: true,
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      { name: "deviceIMEI", type: "string" },
+      { name: "studentIndex", type: "uint256" },
+      { name: "otp", type: "uint256" },
+      { name: "vendorIndex", type: "uint256" },
+      { name: "amount", type: "uint256" },
+      { name: "remark", type: "string" },
+    ],
+    name: "issueNewDevice",
     outputs: [],
     payable: true,
     stateMutability: "payable",
@@ -176,9 +180,12 @@ const abi = [
       {
         components: [
           { name: "name", type: "string" },
+          { name: "vendorName", type: "string" },
+          { name: "vendorIndex", type: "uint256" },
           { name: "rollNo", type: "uint256" },
           { name: "deviceIMEI", type: "string" },
           { name: "amount", type: "uint256" },
+          { name: "remark", type: "string" },
         ],
         name: "",
         type: "tuple[]",

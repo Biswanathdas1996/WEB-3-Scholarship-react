@@ -6,7 +6,7 @@ import contract from "../../contract/Lottery";
 import { AccountContest } from "../../App";
 import swal from "sweetalert";
 import { AppBar, Toolbar } from "@mui/material";
-import Home from '@mui/icons-material/Home';
+import Home from "@mui/icons-material/Home";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -14,8 +14,8 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
   cardHolder: {
     background: "#f3f3f4",
     padding: "20px",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 }));
 
 const StudentRegistration = () => {
@@ -79,7 +79,9 @@ const StudentRegistration = () => {
       {start && <LinearProgress color="secondary" />}
       <AppBar position="relative">
         <Toolbar>
-          <Link to="/" style={{ textDecoration: "none" }}><Home sx={{ mr: 2 }} style={{ color: "#fff" }}/></Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Home sx={{ mr: 2 }} style={{ color: "#fff" }} />
+          </Link>
           <Typography variant="h6" color="inherit" noWrap>
             Welcome to E-Scholarship
           </Typography>
@@ -93,7 +95,7 @@ const StudentRegistration = () => {
         }}
         className={classes.cardHolder}
       >
-        <Form submitForm={getDataFromDatabase} />
+        <Form submitForm={getDataFromDatabase} start={start} />
       </div>
     </>
   );

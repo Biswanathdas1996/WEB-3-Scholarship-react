@@ -81,11 +81,11 @@ export default function StudentDetails() {
                         <TableCell>{studentData?.dob}</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Roll No:</TableCell>
+                        <TableCell>Roll no:</TableCell>
                         <TableCell>{studentData?.rollNo}</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Amount:</TableCell>
+                        <TableCell>Available balance:</TableCell>
                         <TableCell>
                           {parseFloat(
                             studentData?.amount / 1000000000000000000
@@ -93,7 +93,13 @@ export default function StudentDetails() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Otp:</TableCell>
+                        <TableCell>
+                          OTP{" "}
+                          <small style={{ color: "red" }}>
+                            [ Do not shere with anyone ]
+                          </small>
+                          :
+                        </TableCell>
                         <TableCell>{studentData?.otp}</TableCell>
                       </TableRow>
                     </TableBody>

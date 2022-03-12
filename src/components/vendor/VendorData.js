@@ -115,18 +115,18 @@ export default function VendorData({
                         variant="contained"
                         color="success"
                         disabled={start}
-                        onClick={() => activateVendor(key)}
+                        onClick={() => activateVendor(row?.slNo)}
                       >
-                        {start ? "Please wait..." : "Approve"}
+                        Approve
                       </Button>
                     ) : (
                       <Button
                         variant="contained"
                         color="error"
                         disabled={start}
-                        onClick={() => deActivateVendor(key)}
+                        onClick={() => deActivateVendor(row?.slNo)}
                       >
-                        {start ? "Please wait..." : "In-active"}
+                        In-active
                       </Button>
                     )}
                   </td>

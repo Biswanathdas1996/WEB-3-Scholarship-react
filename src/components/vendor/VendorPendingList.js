@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
+import {  createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import VendorData from "./VendorData";
-import SideBar from "../common/SideBar";
 import contract from "../../contract/Lottery";
-import VendorHeader from "./VendorHeader";
+import AdminHeader from "../admin/AdminHeader";
 
 const theme = createTheme();
 export default function VendorPendingList() {
@@ -28,7 +26,7 @@ export default function VendorPendingList() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <VendorHeader name={"Wev 3.0"} />
+      <AdminHeader name={"Wev 3.0"} />
       <main>
         {/* Hero unit */}
         <Box

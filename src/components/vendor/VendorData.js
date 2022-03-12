@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -74,13 +73,7 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
       {start && <LinearProgress />}
       <br />
       <Title>
-        {title}{" "}
-        <Link to="/admin-dashboard">
-          {" "}
-          <span style={{ float: "right" }}>
-            <Button>Back</Button>
-          </span>
-        </Link>
+        {title}
       </Title>
       <Divider sx={{ my: 1 }} />
 

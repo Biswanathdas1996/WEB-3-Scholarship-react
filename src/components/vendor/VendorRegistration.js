@@ -5,13 +5,15 @@ import VendorForm from "./VendorForm";
 import { AccountContest } from "../../App";
 import swal from "sweetalert";
 import contract from "../../contract/Lottery";
+import Home from '@mui/icons-material/Home';
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   cardHolder: {
     background: "#f3f3f4",
     padding: "20px",
-    alignItems: "center",
-    minHeight: 700,
+    alignItems: "center"
   },
   card: {
     maxWidth: 800,
@@ -54,6 +56,14 @@ const VendorRegistration = () => {
   return (
     <>
       {start && <LinearProgress color="secondary" />}
+      <AppBar position="relative">
+        <Toolbar>
+          <Link to="/" style={{ textDecoration: "none" }}><Home sx={{ mr: 2 }} style={{ color: "#fff" }}/></Link>
+          <Typography variant="h6" color="inherit" noWrap>
+            Welcome to E-Scholarship
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <div
         style={{
           justifyContent: "center",

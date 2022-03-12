@@ -1,10 +1,9 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import StudentRegistration from "./components/student/StudentRegistration";
 import web3 from "./web3";
 import LandingPage from "./components/landing/LandingPage";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import VendorRegistration from "./components/vendor/VendorRegistration";
 import VendorPendingList from "./components/vendor/VendorPendingList";
 import IssueDevice from "./components/vendor/IssueDevice";
@@ -15,8 +14,6 @@ import VendorApprovedList from "./components/vendor/VendorApprovedList";
 import StudentList from "./components/student/StudentList";
 import StudentDetails from "./components/student/StudentDetails";
 import VendorIssuedList from "./components/vendor/VendorIssuedList";
-import VendorTransaction from "./components/vendor/VendorTransaction";
-import AdminTransaction from "./components/admin/AdminTransaction";
 import StartScholarship from "./components/StartScholarship";
 import AllIssuedList from "./components/admin/AllIssuedList";
 
@@ -44,10 +41,8 @@ const App = () => {
         <Route path="/vendor-approved" element={<VendorApprovedList />} />
         <Route path="/issue-device" element={<IssueDevice />} />
         <Route path="/vendor-issued-list" element={<VendorIssuedList />} />
-        <Route path="/vendor-transaction" element={<VendorTransaction />} />
         <Route path="/assign-device/:id" element={<AssignDevice />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/all-transaction" element={<AdminTransaction />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/student-list" element={<StudentList />} />
         <Route path="/student-details" element={<StudentDetails />} />

@@ -15,7 +15,14 @@ export default function AdminHeader({ name }) {
           Admin {name}
         </Typography>
 
+        
+
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, ml: 5 }}>
+          <Link to="/admin-dashboard" style={{ textDecoration: "none" }}>
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                Home
+              </Button>
+          </Link>
           <Link to="/student-list" style={{ textDecoration: "none" }}>
             <Button sx={{ my: 2, color: "white", display: "block" }}>
               Student List

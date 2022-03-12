@@ -1,24 +1,21 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from '../vendor/Title';
-import { Button, Divider } from '@mui/material';
+import { Divider } from '@mui/material';
 import Alert from '@mui/material/Alert';
 
 
 
-function preventDefault(event) {
-  event.preventDefault();
-}
+
 
 export default function StudentData({title,studentData}) {
   return (
     <React.Fragment>
-      <Title>{title}<Link to="/admin-dashboard"> <span style={{float:'right'}}><Button>Back</Button></span></Link></Title>
+      <Title>{title}</Title>
       <Divider sx={{ my: 1 }} />
       
       <Table size="small">
@@ -31,7 +28,7 @@ export default function StudentData({title,studentData}) {
           </TableRow>
         </TableHead>
         <TableBody>
-        {studentData.length==0&&<TableRow>
+        {studentData.length===0&&<TableRow>
               <TableCell colSpan={6}><Alert severity="warning">No Vendor available!</Alert></TableCell>
         </TableRow>}
 

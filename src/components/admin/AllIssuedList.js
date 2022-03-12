@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
+import {  createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -46,7 +46,6 @@ export default function AllIssuedList() {
                   <IssuedStudentData
                     title="All Iussed Device List"
                     issueDevice={issueDevice}
-                    back_url={"/admin-dashboard"}
                   />
                 </Paper>
               </Grid>

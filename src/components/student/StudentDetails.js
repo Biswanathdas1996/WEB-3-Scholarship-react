@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
+import {  createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import VendorData from "./StudentData";
-import SideBar from "../common/SideBar";
 import contract from "../../contract/Lottery";
-import { Link } from "react-router-dom";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from "../vendor/Title";
-import { Alert, Button, Divider } from "@mui/material";
-import StudentTransaction from "./StudentTransaction";
+import { Divider } from "@mui/material";
 import StudentHeader from "./StudentHeader";
 import IssuedStudentData from "../vendor/IssuedStudentData";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -73,13 +67,7 @@ export default function StudentDetails() {
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   <Title>
-                    Student Details{" "}
-                    <Link to="/">
-                      {" "}
-                      <span style={{ float: "right" }}>
-                        <Button>Back</Button>
-                      </span>
-                    </Link>
+                    Student Details
                   </Title>
 
                   <Divider sx={{ my: 1 }} />

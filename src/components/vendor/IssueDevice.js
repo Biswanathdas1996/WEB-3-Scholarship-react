@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
+import {  createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import VendorData from "./VendorData";
-import SideBar from "../common/SideBar";
 import Alert from "@mui/material/Alert";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,7 +13,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from "../vendor/Title";
 import { Button, Divider, TextField } from "@mui/material";
-import { Link } from "react-router-dom";
 import contract from "../../contract/Lottery";
 import VendorHeader from "./VendorHeader";
 import AssignDevice from "./AssignDevice";
@@ -83,13 +79,7 @@ export default function IssueDevice() {
                     sx={{ p: 2, display: "flex", flexDirection: "column" }}
                   >
                     <Title>
-                      Issue Device{" "}
-                      <Link to="/vendor-dashboard">
-                        {" "}
-                        <span style={{ float: "right" }}>
-                          <Button>Back</Button>
-                        </span>
-                      </Link>
+                      Issue Device
                     </Title>
 
                     <Divider sx={{ my: 1 }} />

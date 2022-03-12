@@ -4,12 +4,7 @@ import swal from "sweetalert";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Card, Grid } from "@mui/material";
-
-import "date-fns";
-
 import Typography from "@mui/material/Typography";
-import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   card: {
@@ -137,7 +132,7 @@ const FormUI = ({ submitForm }) => {
                         type="submit"
                         value="Register"
                       />
-                      <Link to="/"> <span style={{float:'right'}}><Button color="primary">Back</Button></span></Link>
+                      
                     </span>
                   </Form>
                 )}

@@ -1,28 +1,16 @@
 import React, { useState, useContext } from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import VendorData from "./VendorData";
-import SideBar from "../common/SideBar";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from "./Title";
-import { Button, Divider, TextField } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 import * as Yup from "yup";
 import swal from "sweetalert";
-import { Link } from "react-router-dom";
 import contract from "../../contract/Lottery";
 import { AccountContest } from "../../App";
-
-const mdTheme = createTheme();
 
 const AssignDeviceSchema = Yup.object().shape({
   otp: Yup.string().required("Otp is required"),
@@ -111,7 +99,6 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
             className="p-4 h-full"
             style={{
               marginLeft: "30%",
-              padding: "20px",
               width: 400,
               border: "2px solid #0b9e9e",
               padding: "35px",

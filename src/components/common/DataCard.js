@@ -1,6 +1,4 @@
-import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import PeopleIcon from '@mui/icons-material/PeopleOutlined';
+import { Avatar,  Card, CardContent, Grid, Typography } from '@mui/material';
 
 export const DataCard = (props) => (
   <Card {...props} style={{height: "100px"}}>

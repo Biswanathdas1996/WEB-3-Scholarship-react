@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Home from '@mui/icons-material/Home';
 import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {Link} from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { SmallCard } from '../common/SmallCard';
 const theme = createTheme();
 
 export default function LandingPage() {
@@ -35,8 +33,7 @@ export default function LandingPage() {
           ? theme.palette.grey[100]
           : theme.palette.grey[900],
             pt: 8,
-            pb: 6,
-            overflow: "auto"
+            pb: 6
           }}
         >
           <Container maxWidth="sm">
@@ -65,7 +62,7 @@ export default function LandingPage() {
               <Link to="/vendor-register" style={{textDecoration:"none"}}>
                     <Button variant="outlined" color="secondary" style={{backgroundColor:'#fff'}}>Vendor Register</Button>
               </Link>
-              <Link to="/vendor-dashboard" style={{textDecoration:"none"}}>
+              <Link to="/vendor-dashboard/0" style={{textDecoration:"none"}}>
                     <Button variant="outlined" style={{backgroundColor:'#fff'}}>Vendor Dashboard</Button>
               </Link>
               <Link to="/admin-dashboard" style={{textDecoration:"none"}}>

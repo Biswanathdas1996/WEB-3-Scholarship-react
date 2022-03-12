@@ -5,29 +5,16 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from "./Title";
-import { Button, Divider } from "@mui/material";
+import { Divider } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import { Link } from "react-router-dom";
 
-function preventDefault(event) {
-  event.preventDefault();
-}
+
 
 export default function IssuedStudentData({ title, issueDevice, back_url }) {
   return (
     <React.Fragment>
       <Title>
         {title}
-        {back_url === "" ? (
-          ""
-        ) : (
-          <Link to={back_url}>
-            {" "}
-            <span style={{ float: "right" }}>
-              <Button>Back</Button>
-            </span>
-          </Link>
-        )}
       </Title>
       <Divider sx={{ my: 1 }} />
 
@@ -42,7 +29,7 @@ export default function IssuedStudentData({ title, issueDevice, back_url }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {issueDevice?.length == 0 && (
+          {issueDevice?.length === 0 && (
             <TableRow>
               <TableCell colSpan={6}>
                 <Alert severity="warning">No Vendor available!</Alert>

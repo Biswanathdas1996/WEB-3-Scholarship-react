@@ -119,59 +119,69 @@ export default function IssueDevice() {
                       flexDirection: "column",
                     }}
                   >
+                    <Table
+                      striped
+                      hover
+                      style={{
+                        backgroundColor: "rgb(245 245 245)",
+                        color: "black",
+                      }}
+                    >
+                      <thead
+                        style={{
+                          backgroundColor: "rgb(25 118 210)",
+                          color: "#fff",
+                        }}
+                      >
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                          <th>Dob</th>
+                          <th>Amount</th>
+                          <th>Roll No</th>
+                          <th>Address</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        style={{
+                          backgroundColor: "rgb(245 245 245)",
+                          color: "black",
+                        }}
+                      >
+                        {student.length === 0 && (
+                          <tr>
+                            <td colSpan={7} align="center">
+                              Student Details Not available!
+                            </td>
+                          </tr>
+                        )}
 
-<Table striped   hover style={{backgroundColor:"#01987a",color:"#fff"}}>
-      <thead style={{backgroundColor:"#0a463a",color:"#fff"}}>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Dob</th>
-          <th>Amount</th>
-          <th>Roll No</th>
-          <th>Address</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody style={{backgroundColor:"#01987a",color:"#fff"}}>
+                        {student &&
+                          student?.map((row, key) => {
+                            return (
+                              <tr key={key}>
+                                <td>{key + 1}</td>
+                                <td>{row.name}</td>
+                                <td>{row.dob}</td>
+                                <td>{row.amount}</td>
+                                <td>{row.roll_no}</td>
+                                <td>{row.StudentAddress}</td>
 
-      {student.length === 0 && (
-            <tr>
-              <td colSpan={7} align="center">
-              Student Details Not available!
-              </td>
-            </tr>
-          )}
-
-        {student &&
-          student?.map((row, key)=> {
-            return (
-              <tr key={key}>
-              <td>{key+1}</td>
-              <td>{row.name}</td>
-              <td>{row.dob}</td>
-              <td>{row.amount}</td>
-              <td>{row.roll_no}</td>
-              <td>{row.StudentAddress}</td>
-
-              <td align="right">
-                <Button
-                  variant="contained"
-                  style={{backgroundColor:"#19662b"}}
-                  onClick={() => setDetailsIndex(key + 1)}
-                >
-                  Issue
-                </Button>
-              </td>
-              </tr>
-
-            );
-          })}
-      </tbody>
-      </Table>
-
-
-
-                    
+                                <td align="right">
+                                  <Button
+                                    variant="contained"
+                                    style={{ backgroundColor: "#19662b" }}
+                                    onClick={() => setDetailsIndex(key + 1)}
+                                  >
+                                    Issue
+                                  </Button>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                      </tbody>
+                    </Table>
                   </Paper>
                 )}
 

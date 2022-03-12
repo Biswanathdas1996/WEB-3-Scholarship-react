@@ -7,7 +7,7 @@ export default function StudentData({ title, studentData }) {
       <Title>{title}</Title>
 
       <Table striped hover>
-        <thead style={{ backgroundColor: "#0a463a", color: "#fff" }}>
+        <thead style={{ backgroundColor: "rgb(25 118 210)", color: "#fff" }}>
           <tr>
             <th>#</th>
             <th>Name</th>
@@ -16,7 +16,7 @@ export default function StudentData({ title, studentData }) {
             <th>Amount</th>
           </tr>
         </thead>
-        <tbody style={{ backgroundColor: "#01987a", color: "#fff" }}>
+        <tbody style={{ backgroundColor: "rgb(245 245 245)", color: "black" }}>
           {studentData.length === 0 && (
             <tr>
               <td colSpan={7} align="center">

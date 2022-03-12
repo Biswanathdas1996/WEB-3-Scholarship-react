@@ -62,7 +62,7 @@ export default function LandingPage() {
               <Link to="/vendor-register" style={{textDecoration:"none"}}>
                     <Button variant="outlined" color="secondary" style={{backgroundColor:'#fff'}}>Vendor Register</Button>
               </Link>
-              <Link to="/vendor-dashboard" style={{textDecoration:"none"}}>
+              <Link to="/vendor-dashboard/0" style={{textDecoration:"none"}}>
                     <Button variant="outlined" style={{backgroundColor:'#fff'}}>Vendor Dashboard</Button>
               </Link>
               <Link to="/admin-dashboard" style={{textDecoration:"none"}}>

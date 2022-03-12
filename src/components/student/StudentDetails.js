@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {  createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -15,13 +15,14 @@ import { Divider } from "@mui/material";
 import StudentHeader from "./StudentHeader";
 import IssuedStudentData from "../vendor/IssuedStudentData";
 import LinearProgress from "@mui/material/LinearProgress";
+import { Route, useParams } from "react-router-dom";
 
 const theme = createTheme();
 export default function StudentDetails() {
   const [studentData, setStudentData] = useState([]);
   const [issueDevice, setIssueDevice] = useState([]);
   const [start, setStart] = useState(false);
-
+  let { id } = useParams();
   useEffect(() => {
     fetchStudentData();
   }, []);
@@ -30,7 +31,7 @@ export default function StudentDetails() {
     setStart(true);
     const students = await contract.methods.getListOfStudents().call();
 
-    setStudentData(students[0]);
+    setStudentData(students[id]);
     filterIssueDeviceData();
   }
 
@@ -66,9 +67,7 @@ export default function StudentDetails() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Title>
-                    Student Details
-                  </Title>
+                  <Title>Student Details</Title>
 
                   <Divider sx={{ my: 1 }} />
                   <Table size="small">

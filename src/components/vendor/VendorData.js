@@ -28,7 +28,7 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
       })
       .then((data) => {
         console.log("=>", data);
-        swal("Registration done !", {
+        swal("Vender approved !", {
           icon: "success",
         });
         fetchVendorData();
@@ -53,7 +53,7 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
       })
       .then((data) => {
         console.log("=>", data);
-        swal("Registration done !", {
+        swal("Vender deactivate !", {
           icon: "success",
         });
         fetchVendorData();
@@ -72,9 +72,7 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
     <React.Fragment>
       {start && <LinearProgress />}
       <br />
-      <Title>
-        {title}
-      </Title>
+      <Title>{title}</Title>
       <Divider sx={{ my: 1 }} />
 
       <Table size="small">
@@ -82,7 +80,7 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Registration Number</TableCell>
-            <TableCell>Amount</TableCell>
+            <TableCell>Amount Earned</TableCell>
             <TableCell>address</TableCell>
             <TableCell>Pincode</TableCell>
             <TableCell align="right">Action</TableCell>
@@ -101,7 +99,10 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
             <TableRow key={key}>
               <TableCell>{row?.name}</TableCell>
               <TableCell>{row?.registrationNo || "NA"}</TableCell>
-              <TableCell>₹{parseFloat(row?.amount).toFixed(2)}</TableCell>
+              <TableCell>
+                {parseFloat(row?.amount / 1000000000000000000).toFixed(2)} ETH
+              </TableCell>
+
               <TableCell>{row?.vendorAddress}</TableCell>
               <TableCell>{row?.pincode}</TableCell>
               <TableCell align="right">

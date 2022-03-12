@@ -74,7 +74,7 @@ export default function VendorDashboard(props) {
                   count={
                     parseFloat(
                       vendorData?.amount / 1000000000000000000
-                    ).toFixed(2) + " Wei"
+                    ).toFixed(2) + " ETH"
                   }
                 />
               </Grid>

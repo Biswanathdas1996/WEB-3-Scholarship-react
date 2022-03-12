@@ -22,7 +22,7 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
       })
       .then((data) => {
         console.log("=>", data);
-        swal("Registration done !", {
+        swal("Vender approved !", {
           icon: "success",
         });
         fetchVendorData();
@@ -47,7 +47,7 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
       })
       .then((data) => {
         console.log("=>", data);
-        swal("Registration done !", {
+        swal("Vender deactivate !", {
           icon: "success",
         });
         fetchVendorData();

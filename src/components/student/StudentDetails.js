@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {  createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -14,25 +14,41 @@ import Title from "../vendor/Title";
 import { Divider } from "@mui/material";
 import StudentHeader from "./StudentHeader";
 import IssuedStudentData from "../vendor/IssuedStudentData";
+import LinearProgress from "@mui/material/LinearProgress";
+import { Route, useParams } from "react-router-dom";
+
 const theme = createTheme();
 export default function StudentDetails() {
-  const [studentList, setStudentList] = useState([]);
   const [studentData, setStudentData] = useState([]);
+  const [issueDevice, setIssueDevice] = useState([]);
+  const [start, setStart] = useState(false);
+  let { id } = useParams();
   useEffect(() => {
     fetchStudentData();
   }, []);
 
   async function fetchStudentData() {
+    setStart(true);
     const students = await contract.methods.getListOfStudents().call();
-    setStudentList(students);
-    setStudentData(students[0]);
-    console.log("students", students);
+
+    setStudentData(students[id]);
+    filterIssueDeviceData();
   }
 
+  async function filterIssueDeviceData() {
+    setStart(true);
+    const deviceIssue = await contract.methods.getListOfDeviceIssue().call();
+
+    await setIssueDevice(deviceIssue);
+    setStart(false);
+  }
+
+  console.log("students", issueDevice);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <StudentHeader name={"Wev 3.0"} />
+      {start && <LinearProgress />}
       <main>
         {/* Hero unit */}
         <Box
@@ -51,36 +67,34 @@ export default function StudentDetails() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Title>
-                    Student Details
-                  </Title>
+                  <Title>Student Details</Title>
 
                   <Divider sx={{ my: 1 }} />
                   <Table size="small">
                     <TableBody>
                       <TableRow>
                         <TableCell>Name:</TableCell>
-                        <TableCell>{studentData.name}</TableCell>
+                        <TableCell>{studentData?.name}</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>Date Of birth:</TableCell>
-                        <TableCell>{studentData.dob}</TableCell>
+                        <TableCell>{studentData?.dob}</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>Roll No:</TableCell>
-                        <TableCell>{studentData.rollNo}</TableCell>
+                        <TableCell>{studentData?.rollNo}</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>Amount:</TableCell>
                         <TableCell>
                           {parseFloat(
-                            studentData.amount / 1000000000000000000
+                            studentData?.amount / 1000000000000000000
                           ).toFixed(3)}
                         </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>Otp:</TableCell>
-                        <TableCell>{studentData.otp}</TableCell>
+                        <TableCell>{studentData?.otp}</TableCell>
                       </TableRow>
                     </TableBody>
                   </Table>
@@ -90,7 +104,9 @@ export default function StudentDetails() {
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   <IssuedStudentData
                     title="Iussed Device List"
-                    studentData={studentList}
+                    issueDevice={issueDevice?.filter(
+                      (data) => data.rollNo === studentData?.rollNo
+                    )}
                     back_url=""
                   />
                 </Paper>

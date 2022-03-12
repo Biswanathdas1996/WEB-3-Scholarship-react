@@ -12,15 +12,18 @@ import AdminHeader from "../admin/AdminHeader";
 const theme = createTheme();
 export default function VendorApprovedList() {
   const [vendorData, setVendorData] = useState([]);
+  const [start, setStart] = useState(false);
   useEffect(() => {
     fetchVendorData();
   }, []);
 
   async function fetchVendorData() {
+    setStart(true);
     const vendorList = await contract.methods.getListOfVendors().call();
     const pendingVendor = vendorList.filter((item) => item.status === true);
     console.log("vendor", vendorList);
     setVendorData(pendingVendor);
+    setStart(false);
   }
 
   return (
@@ -49,6 +52,7 @@ export default function VendorApprovedList() {
                     title="Vendor Approve List"
                     vendorData={vendorData}
                     fetchVendorData={fetchVendorData}
+                    pending={start}
                   />
                 </Paper>
               </Grid>

@@ -8,16 +8,20 @@ import Paper from "@mui/material/Paper";
 import contract from "../../contract/Lottery";
 import StudentData from "./StudentData";
 import AdminHeader from "../admin/AdminHeader";
+
 const theme = createTheme();
 export default function StudentList() {
   const [studentList, setStudentList] = useState([]);
+  const [start, setStart] = useState(false);
   useEffect(() => {
     fetchStudentData();
   }, []);
 
   async function fetchStudentData() {
+    setStart(true);
     const students = await contract.methods.getListOfStudents().call();
     setStudentList(students);
+    setStart(false);
     console.log("students", students);
   }
 
@@ -43,7 +47,11 @@ export default function StudentList() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <StudentData title="Student List" studentData={studentList} />
+                  <StudentData
+                    title="Student List"
+                    studentData={studentList}
+                    start={start}
+                  />
                 </Paper>
               </Grid>
             </Grid>

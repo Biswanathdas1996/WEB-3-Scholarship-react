@@ -1,9 +1,12 @@
 import * as React from "react";
 import Table from "react-bootstrap/Table";
 import Title from "../vendor/Title";
-export default function StudentData({ title, studentData }) {
+import LinearProgress from "@mui/material/LinearProgress";
+
+export default function StudentData({ title, studentData, start }) {
   return (
     <React.Fragment>
+      {start && <LinearProgress />}
       <Title>{title}</Title>
 
       <Table striped hover>
@@ -17,7 +20,7 @@ export default function StudentData({ title, studentData }) {
           </tr>
         </thead>
         <tbody style={{ backgroundColor: "rgb(245 245 245)", color: "black" }}>
-          {studentData.length === 0 && (
+          {!start && studentData.length === 0 && (
             <tr>
               <td colSpan={7} align="center">
                 No Student available!

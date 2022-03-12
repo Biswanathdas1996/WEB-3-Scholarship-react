@@ -7,7 +7,12 @@ import contract from "../../contract/Lottery";
 import { AccountContest } from "../../App";
 import swal from "sweetalert";
 
-export default function VendorData({ title, vendorData, fetchVendorData }) {
+export default function VendorData({
+  title,
+  vendorData,
+  fetchVendorData,
+  pending,
+}) {
   const account = useContext(AccountContest);
 
   const [start, setStart] = useState(false);
@@ -64,7 +69,7 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
 
   return (
     <React.Fragment>
-      {start && <LinearProgress />}
+      {(start || pending) && <LinearProgress />}
       <Title>{title}</Title>
       <Table
         striped
@@ -76,14 +81,14 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
             <th>#</th>
             <th>Name</th>
             <th>Registration Number</th>
-            <th>Amount</th>
+            <th>Earning</th>
             <th>Address</th>
             <th>Pincode</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody style={{ backgroundColor: "rgb(245 245 245)", color: "black" }}>
-          {vendorData.length === 0 && (
+          {!pending && vendorData.length === 0 && (
             <tr>
               <td colSpan={7} align="center">
                 No Vendor available!
@@ -98,7 +103,10 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
                   <td>{key + 1}</td>
                   <td>{row?.name}</td>
                   <td>{row?.registrationNo || "NA"}</td>
-                  <td>₹{parseFloat(row?.amount).toFixed(2)}</td>
+                  <td>
+                    {parseFloat(row?.amount / 1000000000000000000).toFixed(2)}{" "}
+                    ETH
+                  </td>
                   <td>{row?.vendorAddress}</td>
                   <td>{row?.pincode}</td>
                   <td align="right">
@@ -106,17 +114,19 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
                       <Button
                         variant="contained"
                         color="success"
+                        disabled={start}
                         onClick={() => activateVendor(key)}
                       >
-                        Approve
+                        {start ? "Please wait..." : "Approve"}
                       </Button>
                     ) : (
                       <Button
                         variant="contained"
                         color="error"
+                        disabled={start}
                         onClick={() => deActivateVendor(key)}
                       >
-                        In-active
+                        {start ? "Please wait..." : "In-active"}
                       </Button>
                     )}
                   </td>

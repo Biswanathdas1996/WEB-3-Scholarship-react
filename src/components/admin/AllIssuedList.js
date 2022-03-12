@@ -11,14 +11,17 @@ import AdminHeader from "./AdminHeader";
 const theme = createTheme();
 export default function AllIssuedList() {
   const [issueDevice, setIssueDevice] = useState([]);
+  const [start, setStart] = useState(false);
   useEffect(() => {
     fetchStudentData();
   }, []);
 
   async function fetchStudentData() {
+    setStart(true);
     const deviceIssue = await contract.methods.getListOfDeviceIssue().call();
     setIssueDevice(deviceIssue);
     console.log("deviceIssue", deviceIssue);
+    setStart(false);
   }
 
   return (
@@ -46,6 +49,7 @@ export default function AllIssuedList() {
                   <IssuedStudentData
                     title="All Iussed Device List"
                     issueDevice={issueDevice}
+                    start={start}
                   />
                 </Paper>
               </Grid>

@@ -35,6 +35,7 @@ export default function IssuedStudentData({ title, issueDevice, back_url }) {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
+            <TableCell>Vendor Name</TableCell>
             <TableCell>Roll No</TableCell>
             <TableCell>IMEI No</TableCell>
             <TableCell>Amount</TableCell>
@@ -51,11 +52,12 @@ export default function IssuedStudentData({ title, issueDevice, back_url }) {
 
           {issueDevice?.map((row, key) => (
             <TableRow key={key}>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.rollNo}</TableCell>
-              <TableCell>{row.deviceIMEI}</TableCell>
+              <TableCell>{row?.name}</TableCell>
+              <TableCell>{row?.vendorName}</TableCell>
+              <TableCell>{row?.rollNo}</TableCell>
+              <TableCell>{row?.deviceIMEI}</TableCell>
               <TableCell>
-                {parseFloat(row.amount / 1000000000000000000).toFixed(2)}
+                {parseFloat(row?.amount / 1000000000000000000).toFixed(2)}
                 <b> ETH</b>
               </TableCell>
             </TableRow>

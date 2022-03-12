@@ -1,48 +1,46 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import Table from "react-bootstrap/Table";
 import Title from '../vendor/Title';
-import { Divider } from '@mui/material';
-import Alert from '@mui/material/Alert';
-
-
-
-
-
 export default function StudentData({title,studentData}) {
   return (
     <React.Fragment>
       <Title>{title}</Title>
-      <Divider sx={{ my: 1 }} />
-      
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>DOB</TableCell>
-            <TableCell>Roll No</TableCell>
-            <TableCell>Amount</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {studentData.length===0&&<TableRow>
-              <TableCell colSpan={6}><Alert severity="warning">No Vendor available!</Alert></TableCell>
-        </TableRow>}
 
-          {studentData.map((row,key) => (
-            <TableRow key={key}>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.dob}</TableCell>
-              <TableCell>{row.rollNo}</TableCell>
-              <TableCell>{row.amount}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      
+      <Table striped hover >
+      <thead style={{backgroundColor:"#0a463a",color:"#fff"}}>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>DOB</th>
+          <th>Roll No</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody style={{backgroundColor:"#01987a",color:"#fff"}}>
+
+      {studentData.length === 0 && (
+            <tr>
+              <td colSpan={7} align="center">
+                No Student available!
+              </td>
+            </tr>
+          )}
+
+        {studentData &&
+          studentData?.map((row, key)=> {
+            return (
+              <tr key={key}>
+                <td>{key+1}</td>
+                <td>{row.name}</td>
+                <td>{row.dob}</td>
+                <td>{row.rollNo}</td>
+                <td>{row.amount}</td>
+              </tr>
+
+            );
+          })}
+      </tbody>
+      </Table> 
     </React.Fragment>
   );
 }

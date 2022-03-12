@@ -1,13 +1,7 @@
 import React, { useContext, useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import Table from "react-bootstrap/Table";
 import Title from "../vendor/Title";
-import { Button, Divider } from "@mui/material";
-import Alert from "@mui/material/Alert";
-
+import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import contract from "../../contract/Lottery";
 import { AccountContest } from "../../App";
@@ -71,40 +65,42 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
   return (
     <React.Fragment>
       {start && <LinearProgress />}
-      <br />
       <Title>
         {title}
       </Title>
-      <Divider sx={{ my: 1 }} />
+      <Table striped   hover style={{backgroundColor:"#01987a",color:"#fff"}}>
+      <thead style={{backgroundColor:"#0a463a",color:"#fff"}}>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Registration Number</th>
+          <th>Amount</th>
+          <th>Address</th>
+          <th>Pincode</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody style={{backgroundColor:"#01987a",color:"#fff"}}>
 
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Registration Number</TableCell>
-            <TableCell>Amount</TableCell>
-            <TableCell>address</TableCell>
-            <TableCell>Pincode</TableCell>
-            <TableCell align="right">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {vendorData.length === 0 && (
-            <TableRow>
-              <TableCell colSpan={6}>
-                <Alert severity="warning">No Vendor available!</Alert>
-              </TableCell>
-            </TableRow>
+      {vendorData.length === 0 && (
+            <tr>
+              <td colSpan={7} align="center">
+                No Vendor available!
+              </td>
+            </tr>
           )}
 
-          {vendorData?.map((row, key) => (
-            <TableRow key={key}>
-              <TableCell>{row?.name}</TableCell>
-              <TableCell>{row?.registrationNo || "NA"}</TableCell>
-              <TableCell>₹{parseFloat(row?.amount).toFixed(2)}</TableCell>
-              <TableCell>{row?.vendorAddress}</TableCell>
-              <TableCell>{row?.pincode}</TableCell>
-              <TableCell align="right">
+        {vendorData &&
+          vendorData?.map((row, key)=> {
+            return (
+              <tr key={key}>
+              <td>{key+1}</td>
+              <td>{row?.name}</td>
+              <td>{row?.registrationNo || "NA"}</td>
+              <td>₹{parseFloat(row?.amount).toFixed(2)}</td>
+              <td>{row?.vendorAddress}</td>
+              <td>{row?.pincode}</td>
+              <td align="right">
                 {!row?.status ? (
                   <Button
                     variant="contained"
@@ -122,11 +118,15 @@ export default function VendorData({ title, vendorData, fetchVendorData }) {
                     In-active
                   </Button>
                 )}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+              </td>
+              </tr>
+
+            );
+          })}
+      </tbody>
       </Table>
+
+      
     </React.Fragment>
   );
 }

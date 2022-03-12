@@ -36,7 +36,7 @@ export default function VendorDashboard(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <VendorHeader name="Wev 3.0" />
+      <VendorHeader name="" />
       <main>
         {/* Hero unit */}
         <Box

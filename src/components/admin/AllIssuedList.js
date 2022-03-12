@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {  createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -24,7 +24,7 @@ export default function AllIssuedList() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AdminHeader name={"Wev 3.0"} />
+      <AdminHeader name={""} />
       <main>
         {/* Hero unit */}
         <Box

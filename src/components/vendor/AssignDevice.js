@@ -6,7 +6,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import Title from "./Title";
-import { Button, Divider } from "@mui/material";
+import { Button, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import * as Yup from "yup";
 import swal from "sweetalert";
 import contract from "../../contract/Lottery";
@@ -73,26 +73,34 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
           </span>
         </Title>
         <Divider sx={{ my: 1 }} />
-        <Table size="small">
-          <TableBody>
-            <TableRow>
-              <TableCell>Name:</TableCell>
-              <TableCell>{studentDetails.name}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Date Of birth:</TableCell>
-              <TableCell>{studentDetails.dob}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Roll No:</TableCell>
-              <TableCell>{studentDetails.rollNo}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Amount:</TableCell>
-              <TableCell>{studentDetails.amount}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        
+        <List style={{with:"50%",align:"right",marginLeft: "30%"}}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>Name: </ListItemIcon>
+              <ListItemText primary={studentDetails.name} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>Date Of birth: </ListItemIcon>
+              <ListItemText primary={studentDetails.dob} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>Roll No: </ListItemIcon>
+              <ListItemText primary={studentDetails.rollNo} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>Amount: </ListItemIcon>
+              <ListItemText primary={studentDetails.amount} />
+            </ListItemButton>
+          </ListItem>
+        </List>
+        
 
         <Grid item xs={12} sx={{ my: 1 }}>
           <div
@@ -147,13 +155,13 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
                       autoComplete="flase"
                       placeholder="Enter IMEI No"
                       className={`form-control text-muted ${
-                        touched.imei_no && errors.imei_no ? "is-invalid" : ""
+                        touched.imei && errors.imei ? "is-invalid" : ""
                       }`}
                     />
 
                     <ErrorMessage
                       component="div"
-                      name="imei_no"
+                      name="imei"
                       className="invalid-feedback"
                     />
                   </div>

@@ -70,20 +70,24 @@ export default function IssueDevice() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 {detailsIndex === "" && (
-                  <Paper
-                    sx={{ p: 2, display: "flex", flexDirection: "column" }}
-                  >
-                    <Title>
-                      Issue Device
-                    </Title>
+                  
+                    
 
-                    <Divider sx={{ my: 1 }} />
+                   
                     <Grid container>
                       <Grid item xs={3}></Grid>
                       <Grid item xs={6}>
+                      <Paper
+                    sx={{ p: 2, display: "flex", flexDirection: "column" ,
+                    border: "2px solid #0b9e9e",}}
+
+                  >
+                      <Title>
+                      Issue Device
+                    </Title>
+                    <Divider></Divider>
                         <div
                           style={{
-                            border: "2px solid #0b9e9e",
                             padding: "35px",
                             borderRadius: "8px",
                           }}
@@ -107,10 +111,11 @@ export default function IssueDevice() {
                             </Button>
                           </div>
                         </div>
+                        </Paper>
                       </Grid>
                       <Grid item xs={3}></Grid>
                     </Grid>
-                  </Paper>
+                  
                 )}
                 {isSubmit && detailsIndex === "" && (
                   <Paper
@@ -130,8 +135,7 @@ export default function IssueDevice() {
           <th>Dob</th>
           <th>Amount</th>
           <th>Roll No</th>
-          <th>Address</th>
-          <th>Action</th>
+          <th align="right">Action</th>
         </tr>
       </thead>
       <tbody style={{backgroundColor:"#01987a",color:"#fff"}}>
@@ -152,8 +156,7 @@ export default function IssueDevice() {
               <td>{row.name}</td>
               <td>{row.dob}</td>
               <td>{row.amount}</td>
-              <td>{row.roll_no}</td>
-              <td>{row.StudentAddress}</td>
+              <td>{row.rollNo}</td>
 
               <td align="right">
                 <Button

@@ -26,7 +26,7 @@ export default function VendorApprovedList() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AdminHeader name={"Wev 3.0"} />
+      <AdminHeader name={""} />
       <main>
         {/* Hero unit */}
         <Box

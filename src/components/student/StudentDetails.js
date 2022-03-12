@@ -47,7 +47,7 @@ export default function StudentDetails() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <StudentHeader name={"Wev 3.0"} />
+      <StudentHeader name={""} />
       {start && <LinearProgress />}
       <main>
         {/* Hero unit */}

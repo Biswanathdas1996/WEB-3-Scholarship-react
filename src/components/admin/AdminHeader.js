@@ -15,35 +15,33 @@ export default function AdminHeader({ name }) {
           Admin {name}
         </Typography>
 
-        
-
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, ml: 5 }}>
           <Link to="/admin-dashboard" style={{ textDecoration: "none" }}>
-              <Button sx={{ my: 2, color: "white", display: "block" }}>
-                Home
-              </Button>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              Home
+            </Button>
           </Link>
           <Link to="/student-list" style={{ textDecoration: "none" }}>
             <Button sx={{ my: 2, color: "white", display: "block" }}>
-              Student List
-            </Button>
-          </Link>
-
-          <Link to="/vendor-pending" style={{ textDecoration: "none" }}>
-            <Button sx={{ my: 2, color: "white", display: "block" }}>
-              Pending Vendor List
+              Students
             </Button>
           </Link>
 
           <Link to="/vendor-approved" style={{ textDecoration: "none" }}>
             <Button sx={{ my: 2, color: "white", display: "block" }}>
-              Approved Vendor List
+              Vendors
+            </Button>
+          </Link>
+
+          <Link to="/vendor-pending" style={{ textDecoration: "none" }}>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              Requests
             </Button>
           </Link>
 
           <Link to="/all-issued-device" style={{ textDecoration: "none" }}>
             <Button sx={{ my: 2, color: "white", display: "block" }}>
-              Issued Device List
+              Issued Devices
             </Button>
           </Link>
         </Box>

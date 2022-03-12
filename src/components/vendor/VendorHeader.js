@@ -17,7 +17,7 @@ export default function VendorHeader({ name }) {
             Vendor
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, ml: 5 }}>
-            <Link to="/vendor-dashboard" style={{ textDecoration: "none" }}>
+            <Link to="/vendor-dashboard/0" style={{ textDecoration: "none" }}>
               <Button sx={{ my: 2, color: "white", display: "block" }}>
                 Home
               </Button>

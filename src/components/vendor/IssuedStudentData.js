@@ -42,7 +42,8 @@ export default function IssuedStudentData({ title, issueDevice, back_url }) {
               <TableCell>{row.rollNo}</TableCell>
               <TableCell>{row.deviceIMEI}</TableCell>
               <TableCell>
-                {row.amount} <b>Wei</b>
+                {parseFloat(row.amount / 1000000000000000000).toFixed(2)}
+                <b> ETH</b>
               </TableCell>
             </TableRow>
           ))}

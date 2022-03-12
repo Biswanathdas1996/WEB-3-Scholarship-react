@@ -72,7 +72,11 @@ export default function StudentDetails() {
                       </TableRow>
                       <TableRow>
                         <TableCell>Amount:</TableCell>
-                        <TableCell>{studentData.amount}</TableCell>
+                        <TableCell>
+                          {parseFloat(
+                            studentData.amount / 1000000000000000000
+                          ).toFixed(3)}
+                        </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>Otp:</TableCell>

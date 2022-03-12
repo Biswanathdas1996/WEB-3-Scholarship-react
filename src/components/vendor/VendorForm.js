@@ -8,14 +8,14 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
-  cardHolder: {
-    background: "#1A2038",
-  },
+ 
   card: {
     maxWidth: 900,
-    minWidth: 400,
+    width:500,
     borderRadius: 5,
-    margin: "1rem",
+    marginTop: "3rem",
+    display:"flex",
+    marginLeft:"33%"
   },
 }));
 

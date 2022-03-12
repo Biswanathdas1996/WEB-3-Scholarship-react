@@ -48,7 +48,7 @@ export default function StudentList() {
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   <StudentData
-                    title="Student List"
+                    title="Student Record"
                     studentData={studentList}
                     start={start}
                   />

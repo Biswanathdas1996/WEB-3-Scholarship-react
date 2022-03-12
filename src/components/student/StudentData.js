@@ -10,9 +10,9 @@ export default function StudentData({ title, studentData, start }) {
       <Title>{title}</Title>
 
       <Table striped hover>
-        <thead style={{ backgroundColor: "rgb(25 118 210)", color: "#fff" }}>
+        <thead style={{ backgroundColor: "#e08912", color: "#fff" }}>
           <tr>
-            <th>#</th>
+            <th>#ID</th>
             <th>Name</th>
             <th>DOB</th>
             <th>Roll No</th>

@@ -14,9 +14,9 @@ export default function IssuedStudentData({ title, issueDevice, start }) {
         hover
         style={{ backgroundColor: "rgb(245 245 245)", color: "black" }}
       >
-        <thead style={{ backgroundColor: "rgb(25 118 210)", color: "#fff" }}>
+        <thead style={{ backgroundColor: "#e08912", color: "#fff" }}>
           <tr>
-            <th>#</th>
+            <th>#ID</th>
             <th>Name</th>
             <th>Vendor</th>
 

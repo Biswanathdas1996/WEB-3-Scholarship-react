@@ -12,15 +12,10 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   cardHolder: {
     background: "#f3f3f4",
-    padding: "20px",
     alignItems: "center",
-  },
-  card: {
-    maxWidth: 800,
-    minWidth: 400,
-    borderRadius: 12,
-    margin: "1rem",
-  },
+    height: "90vh",
+    overflow: "auto",
+  }
 }));
 
 const VendorRegistration = () => {
@@ -56,7 +51,7 @@ const VendorRegistration = () => {
   return (
     <>
       {start && <LinearProgress color="secondary" />}
-      <AppBar position="relative">
+      <AppBar position="relative" position="relative" style={{backgroundColor:"#d25304",color:"#fff"}}>
         <Toolbar>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Home sx={{ mr: 2 }} style={{ color: "#fff" }} />
@@ -67,11 +62,6 @@ const VendorRegistration = () => {
         </Toolbar>
       </AppBar>
       <div
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          display: "flex",
-        }}
         className={classes.cardHolder}
       >
         <VendorForm submitForm={submitForm} start={start} />

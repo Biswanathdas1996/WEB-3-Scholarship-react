@@ -10,13 +10,14 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ImageCard } from "../common/ImageCard";
 const theme = createTheme();
 
 export default function LandingPage() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="relative" style={{backgroundColor:"#d25304",color:"#fff"}}>
         <Toolbar>
           <Home sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" noWrap>
@@ -24,7 +25,7 @@ export default function LandingPage() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <main>
+      <main >
         {/* Hero unit */}
         <Box
           sx={{
@@ -32,9 +33,13 @@ export default function LandingPage() {
               theme.palette.mode === "light"
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
+               
             pt: 8,
             pb: 6,
+            height: "90vh",
+            overflow: "auto",
           }}
+          
         >
           <Container maxWidth="sm">
             <Typography
@@ -57,9 +62,9 @@ export default function LandingPage() {
             <Stack
               sx={{ pt: 4 }}
               direction="row"
-              spacing={2}
+              spacing={1}
               justifyContent="center"
-            >
+            >{/* 
               <Link to="/register" style={{ textDecoration: "none" }}>
                 <Button variant="outlined" style={{ backgroundColor: "#fff" }}>
                   Student Register
@@ -92,7 +97,30 @@ export default function LandingPage() {
                 <Button variant="outlined" style={{ backgroundColor: "#fff" }}>
                   Student Dashboard
                 </Button>
+              </Link> */}
+
+            
+              <div style={{display:"inline-flex"}}>
+              <Link to="/register" style={{ textDecoration: "none" }}>
+                  <ImageCard title="Student Register" image_index="0"/>
               </Link>
+              <Link to="/vendor-register" style={{ textDecoration: "none" }}>
+                  <ImageCard title="Vendor Register" image_index="1"/>
+              </Link>
+              <Link to="/vendor-dashboard/0" style={{ textDecoration: "none" }}>
+                  <ImageCard title="Vendor Dashboard" image_index="2"/>
+              </Link>
+              <Link to="/admin-dashboard" style={{ textDecoration: "none" }}>
+                  <ImageCard title="Admin Dashboard" image_index="3"/>
+              </Link>
+              <Link to="/student-details/0" style={{ textDecoration: "none" }}>
+                  <ImageCard title="Student Dashboard" image_index="4"/>
+              </Link>
+              
+
+              </div>
+
+
             </Stack>
           </Container>
         </Box>

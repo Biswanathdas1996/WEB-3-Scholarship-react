@@ -5,13 +5,16 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Card, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import { findByLabelText } from "@testing-library/react";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   card: {
     maxWidth: 900,
-    minWidth: 400,
+    width:500,
     borderRadius: 5,
-    margin: "1rem",
+    marginTop: "3rem",
+    display:"flex",
+    marginLeft:"33%"
   },
 }));
 
@@ -45,7 +48,7 @@ const FormUI = ({ submitForm, start }) => {
       <Card className={classes.card}>
         <Grid container>
           <Grid item lg={12} md={12} sm={12} xs={12}>
-            <Typography sx={{ m: 2, mb: 0 }} component="h1" variant="h5">
+            <Typography  style={{marginLeft:"15px",marginTop:"10px",padding:3}} component="h1" variant="h5">
               Student Registration
             </Typography>
             <div

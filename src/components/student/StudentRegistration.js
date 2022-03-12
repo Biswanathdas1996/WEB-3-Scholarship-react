@@ -13,8 +13,9 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   cardHolder: {
     background: "#f3f3f4",
-    padding: "20px",
     alignItems: "center",
+    height: "90vh",
+    overflow: "auto",
   },
 }));
 
@@ -77,7 +78,7 @@ const StudentRegistration = () => {
   return (
     <>
       {start && <LinearProgress color="secondary" />}
-      <AppBar position="relative">
+      <AppBar position="relative" position="relative" style={{backgroundColor:"#d25304",color:"#fff"}}>
         <Toolbar>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Home sx={{ mr: 2 }} style={{ color: "#fff" }} />
@@ -88,11 +89,7 @@ const StudentRegistration = () => {
         </Toolbar>
       </AppBar>
       <div
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          display: "flex",
-        }}
+       
         className={classes.cardHolder}
       >
         <Form submitForm={getDataFromDatabase} start={start} />

@@ -62,8 +62,9 @@ export default function IssueDevice() {
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
             flexGrow: 1,
-            height: "100vh",
+            height: "90vh",
             overflow: "auto",
+            paddingBottom:10
           }}
         >
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
@@ -125,18 +126,18 @@ export default function IssueDevice() {
                       striped
                       hover
                       style={{
-                        backgroundColor: "rgb(245 245 245)",
+                        backgroundColor: "#e08912",
                         color: "black",
                       }}
                     >
                       <thead
                         style={{
-                          backgroundColor: "rgb(25 118 210)",
+                          backgroundColor: "#e08912",
                           color: "#fff",
                         }}
                       >
                         <tr>
-                          <th>#</th>
+                          <th>#ID</th>
                           <th>Name</th>
                           <th>Dob</th>
                           <th>Available Balance</th>

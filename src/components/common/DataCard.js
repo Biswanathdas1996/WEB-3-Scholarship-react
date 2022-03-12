@@ -26,7 +26,7 @@ export const DataCard = (props) => (
         <Grid item>
           <Avatar
             sx={{
-              backgroundColor: 'success.main',
+              backgroundColor: '#e78d13',
               height: 56,
               width: 56
             }}

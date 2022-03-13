@@ -20,6 +20,7 @@ import swal from "sweetalert";
 import contract from "../../contract/Scholarship";
 import { AccountContest } from "../../App";
 import LinearProgress from "@mui/material/LinearProgress";
+import web3 from "../../web3";
 
 const AssignDeviceSchema = Yup.object().shape({
   otp: Yup.string().required("Otp is required"),
@@ -35,6 +36,7 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
 
   const saveData = (value) => {
     const { otp, imei, amount, remark } = value;
+    const toatalAmount = web3.utils.toWei(amount, "ether");
     console.log(value);
     swal({
       title: "Are you sure?",
@@ -44,7 +46,7 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        submitForm(imei, otp, amount, remark);
+        submitForm(imei, otp, toatalAmount, remark);
       }
     });
   };
@@ -191,7 +193,7 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="name">Amount</label>
+                    <label htmlFor="name">Amount (ETH)</label>
                     <Field
                       type="text"
                       name="amount"

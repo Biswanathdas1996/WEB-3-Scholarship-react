@@ -129,7 +129,7 @@ const FormUI = () => {
                 {({ touched, errors, isSubmitting }) => (
                   <Form>
                     <div className="form-group">
-                      <label htmlFor="number">Amount (Wei)</label>
+                      <label htmlFor="number">Amount (ETH)</label>
                       <Field
                         type="number"
                         name="number"

@@ -178,7 +178,7 @@ export default function IssueDevice() {
                                   <Button
                                     variant="contained"
                                     style={{ backgroundColor: "#19662b" }}
-                                    onClick={() => setDetailsIndex(key + 1)}
+                                    onClick={() => setDetailsIndex(row?.slNo)}
                                   >
                                     Issue
                                   </Button>
@@ -200,7 +200,7 @@ export default function IssueDevice() {
                     }}
                   >
                     <AssignDevice
-                      studentDetails={student[0]}
+                      studentDetails={student[detailsIndex]}
                       setDetailsIndex={setDetailsIndex}
                     />
                   </Paper>

@@ -91,7 +91,8 @@ export default function StudentDetails() {
                         <TableCell>
                           {parseFloat(
                             studentData?.amount / 1000000000000000000
-                          ).toFixed(3)}
+                          ).toFixed(3)}{" "}
+                          ETH
                         </TableCell>
                       </TableRow>
                       <TableRow>

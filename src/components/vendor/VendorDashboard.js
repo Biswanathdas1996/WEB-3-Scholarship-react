@@ -15,6 +15,7 @@ import { DataCard } from "../common/DataCard";
 import contract from "../../contract/Scholarship";
 import { Route, useParams } from "react-router-dom";
 import VendorInfo from "./VendorInfo";
+import { DashboardCard } from "../common/DashboadCard";
 
 const theme = createTheme();
 
@@ -54,14 +55,13 @@ export default function VendorDashboard(props) {
         >
           <Container maxWidth={false}>
             <Grid container spacing={3}>
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
+              {/* <Grid item xl={3} lg={3} sm={6} xs={12}>
                 <DataCard
                   name="Total Issued Device"
                   icon={<PeopleIcon />}
                   count="0"
                 />
               </Grid>
-
               <Grid item xl={3} lg={3} sm={6} xs={12}>
                 <DataCard
                   name="Earning"
@@ -72,6 +72,17 @@ export default function VendorDashboard(props) {
                     ).toFixed(2) + " ETH"
                   }
                 />
+              </Grid> */}
+
+              <Grid item xl={3} lg={3} sm={6} xs={12}>
+                <DashboardCard title="Total Issued Device" image_index="4" count="0"/>
+              </Grid>
+              <Grid item xl={3} lg={3} sm={6} xs={12}>
+                <DashboardCard title="Earning" image_index="4" count={
+                    parseFloat(
+                      vendorData?.amount / 1000000000000000000
+                    ).toFixed(2) + " ETH"
+                  }/>
               </Grid>
             </Grid>
           </Container>

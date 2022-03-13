@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     color: "rgba(255,255,255,0.78)"
   }
 });
-export const ImageCard = () => {
+export const DashboardCard = () => {
   const classes = useStyles();
 
 return(

@@ -36,7 +36,7 @@ export default function LandingPage() {
               theme.palette.mode === "light"
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
-
+            height:"90vh",
             pt: 8,
             pb: 6,
           }}

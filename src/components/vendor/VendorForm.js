@@ -51,7 +51,7 @@ const VendorForm = ({ submitForm, start }) => {
       <Card className={classes.card}>
         <Grid container>
           <Grid item lg={12} md={12} sm={12} xs={12}>
-            <Typography sx={{ m: 2 }} component="h1" variant="h5">
+            <Typography style={{marginLeft:"15px",marginTop:"10px",padding:3}} component="h1" variant="h5">
               Vendor Registration
             </Typography>
             <div

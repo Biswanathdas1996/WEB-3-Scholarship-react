@@ -22,7 +22,9 @@ export default function StudentDetails() {
   const [studentData, setStudentData] = useState([]);
   const [issueDevice, setIssueDevice] = useState([]);
   const [start, setStart] = useState(false);
-  let { id } = useParams();
+
+  const id = localStorage.getItem("studentID");
+
   useEffect(() => {
     fetchStudentData();
   }, []);

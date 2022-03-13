@@ -23,11 +23,11 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ openVendorModal, closeVendorModal }) {
+export default function BasicModal({ openStudentModal, closeStudentModal }) {
   const [start, setStart] = React.useState(false);
   const [vendorData, setVendorData] = React.useState([]);
   let history = useNavigate();
-  const handleClose = () => closeVendorModal(false);
+  const handleClose = () => closeStudentModal(false);
 
   React.useEffect(() => {
     fetchVendorData();
@@ -35,29 +35,28 @@ export default function BasicModal({ openVendorModal, closeVendorModal }) {
 
   async function fetchVendorData() {
     setStart(true);
-    const vendorList = await contract.methods.getListOfVendors().call();
-    const vendor = vendorList.filter((item) => item.status === true);
-    console.log("vendor", vendorList);
-    setVendorData(vendor);
+    const studentList = await contract.methods.getListOfStudents().call();
+    console.log(studentList);
+    setVendorData(studentList);
     setStart(false);
   }
 
   const login = (slNo) => {
-    localStorage.setItem("vendorID", slNo);
-    history("/vendor-dashboard");
+    localStorage.setItem("studentID", slNo);
+    history("/student-details");
   };
 
   return (
     <div>
       <Modal
-        open={openVendorModal}
+        open={openStudentModal}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Select vendor
+            Select student
           </Typography>
           {vendorData.length > 0
             ? vendorData.map((data) => {

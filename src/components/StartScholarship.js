@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import swal from "sweetalert";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import lottery from "../contract/Lottery";
+import lottery from "../contract/Scholarship";
 import { AccountContest } from "../App";
 import web3 from "../web3";
 import LinearProgress from "@mui/material/LinearProgress";

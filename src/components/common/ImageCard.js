@@ -1,23 +1,34 @@
-import { Avatar,  Box,  Button,  Card, CardContent, Grid, Typography } from '@mui/material';
-import { FiCard, FiCardActions, FiCardContent, FiCardMedia } from './FullImageCard';
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+} from "@mui/material";
+import {
+  FiCard,
+  FiCardActions,
+  FiCardContent,
+  FiCardMedia,
+} from "./FullImageCard";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const imageList=[
-  '/assets/images/one.jpg',
-  '/assets/images/two.jpg',
-  '/assets/images/three.jpg',
-  '/assets/images/four.jpg',
-  '/assets/images/five.jpg'
-]
-
-
+const imageList = [
+  "/assets/images/one.jpg",
+  "/assets/images/two.jpg",
+  "/assets/images/three.jpg",
+  "/assets/images/four.jpg",
+  "/assets/images/five.jpg",
+];
 
 const useStyles = makeStyles({
   container: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   /**
    * Max Card with for demo
@@ -25,9 +36,9 @@ const useStyles = makeStyles({
    */
   card: {
     maxWidth: 345,
-    minWidth:250,
-    height:150,
-    marginLeft:15
+    minWidth: 250,
+    height: 150,
+    marginLeft: 15,
   },
 
   /**
@@ -35,7 +46,7 @@ const useStyles = makeStyles({
    * Same vale used in Material-ui Card Demos
    */
   media: {
-    height: 140
+    height: 140,
   },
 
   /**
@@ -44,46 +55,41 @@ const useStyles = makeStyles({
    */
   fiCardContent: {
     color: "#f8f9fa",
-    backgroundColor: "rgba(0,0,0,.24)",
-    height:"100%",
-    fontFamily:"ui-sans-serif"
-    
+    backgroundColor: "rgb(0 0 0 / 68%)",
+    height: "100%",
+    fontFamily: "ui-sans-serif",
   },
   fiCardContentTextSecondary: {
-    padding:10,
-    marginLeft:20,
-    marginTop:30,
-    color: "rgba(255,255,255,0.78)"
-  }
+    padding: 10,
+    marginLeft: 20,
+    marginTop: 30,
+    color: "rgba(255,255,255,0.78)",
+  },
 });
-export const ImageCard = ({title,image_index}) => {
+export const ImageCard = ({ title, image_index }) => {
   const classes = useStyles();
 
-return(
-  <Box my={4}>
-        
-        <FiCard className={classes.card}>
-          <FiCardMedia
-            media="picture"
-            alt="Contemplative Reptile"
-            image={imageList[image_index]}
-            title="Contemplative Reptile"
-          />
-          <FiCardContent className={classes.fiCardContent}>
-            
-            <Typography
-              variant="h6"
-              className={classes.fiCardContentTextSecondary}
-              component="h2"
-            >
-              
-              <Button size="small" color="inherit" variant="outlined">
+  return (
+    <Box my={4}>
+      <FiCard className={classes.card}>
+        <FiCardMedia
+          media="picture"
+          alt="Contemplative Reptile"
+          image={imageList[image_index]}
+          title="Contemplative Reptile"
+        />
+        <FiCardContent className={classes.fiCardContent}>
+          <Typography
+            variant="h6"
+            className={classes.fiCardContentTextSecondary}
+            component="h2"
+          >
+            <Button size="small" color="inherit" variant="outlined">
               {title}
             </Button>
-            </Typography>
-          </FiCardContent>
-          
-        </FiCard>
-      </Box>
-)
-}
+          </Typography>
+        </FiCardContent>
+      </FiCard>
+    </Box>
+  );
+};

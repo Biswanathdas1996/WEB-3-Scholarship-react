@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import * as Yup from "yup";
 import swal from "sweetalert";
-import contract from "../../contract/Lottery";
+import contract from "../../contract/Scholarship";
 import { AccountContest } from "../../App";
 import LinearProgress from "@mui/material/LinearProgress";
 

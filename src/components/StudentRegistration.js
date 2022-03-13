@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Form from "./Form";
 import web3 from "../web3";
-import lottery from "../contract/Lottery";
+import lottery from "../contract/Scholarship";
 import { AccountContest } from "../App";
 import swal from "sweetalert";
 import LinearProgress from "@mui/material/LinearProgress";

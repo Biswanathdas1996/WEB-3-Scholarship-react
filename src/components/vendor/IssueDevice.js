@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import Table from "react-bootstrap/Table";
 import Title from "../vendor/Title";
 import { Button, Divider, TextField } from "@mui/material";
-import contract from "../../contract/Lottery";
+import contract from "../../contract/Scholarship";
 import VendorHeader from "./VendorHeader";
 import AssignDevice from "./AssignDevice";
 
@@ -64,7 +64,7 @@ export default function IssueDevice() {
             flexGrow: 1,
             height: "90vh",
             overflow: "auto",
-            paddingBottom:10
+            paddingBottom: 10,
           }}
         >
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>

@@ -16,8 +16,8 @@ import StudentDetails from "./components/student/StudentDetails";
 import VendorIssuedList from "./components/vendor/VendorIssuedList";
 import StartScholarship from "./components/StartScholarship";
 import AllIssuedList from "./components/admin/AllIssuedList";
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
 export const AccountContest = React.createContext("light");
 
@@ -33,7 +33,7 @@ const App = () => {
   }, []);
 
   return (
-    <AccountContest.Provider value={account} >
+    <AccountContest.Provider value={account}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/start" element={<StartScholarship />} />
@@ -50,8 +50,18 @@ const App = () => {
         <Route path="/student-details/:id" element={<StudentDetails />} />
         <Route path="/all-issued-device" element={<AllIssuedList />} />
       </Routes>
-      <div maxWidth="sm" style={{backgroundColor: "gray", height:"70px",width:"100%", position: "fixed", bottom: 0}}>
-          <img src="/assets/images/pwc_logo.png" height="70px" ></img>
+      <div></div>
+      <div
+        maxWidth="sm"
+        style={{
+          backgroundColor: "#8080807a",
+          padding: 10,
+          bottom: 0,
+          position: "fixed",
+          width: "100%",
+        }}
+      >
+        <img src="/assets/images/pwc_logo.png" height="35px"></img>
       </div>
     </AccountContest.Provider>
   );

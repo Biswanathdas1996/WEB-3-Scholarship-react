@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Title from "../vendor/Title";
 import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
-import contract from "../../contract/Lottery";
+import contract from "../../contract/Scholarship";
 import { AccountContest } from "../../App";
 import swal from "sweetalert";
 

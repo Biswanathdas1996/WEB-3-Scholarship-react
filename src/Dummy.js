@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import web3 from "./web3";
-import lottery from "./contract/Lottery";
+import lottery from "./contract/Scholarship";
 
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";

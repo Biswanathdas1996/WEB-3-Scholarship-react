@@ -7,7 +7,7 @@ import StudentRegistration from "./components/StudentRegistration";
 import StartScholarship from "./components/StartScholarship";
 import StudentList from "./components/StudentList";
 import web3 from "./web3";
-import lottery from "./contract/Lottery";
+import lottery from "./contract/Scholarship";
 import { Routes, Route, Link } from "react-router-dom";
 export const AccountContest = React.createContext("light");
 

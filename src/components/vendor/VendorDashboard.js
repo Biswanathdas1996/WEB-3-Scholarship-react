@@ -12,7 +12,7 @@ import VendorHeader from "./VendorHeader";
 import PeopleIcon from "@mui/icons-material/PeopleOutlined";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { DataCard } from "../common/DataCard";
-import contract from "../../contract/Lottery";
+import contract from "../../contract/Scholarship";
 import { Route, useParams } from "react-router-dom";
 import VendorInfo from "./VendorInfo";
 

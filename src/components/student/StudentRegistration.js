@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Form from "./Form";
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@mui/material/LinearProgress";
-import contract from "../../contract/Lottery";
+import contract from "../../contract/Scholarship";
 import { AccountContest } from "../../App";
 import swal from "sweetalert";
 import { AppBar, Toolbar } from "@mui/material";
@@ -78,7 +78,11 @@ const StudentRegistration = () => {
   return (
     <>
       {start && <LinearProgress color="secondary" />}
-      <AppBar position="relative" position="relative" style={{backgroundColor:"#d25304",color:"#fff"}}>
+      <AppBar
+        position="relative"
+        position="relative"
+        style={{ backgroundColor: "#d25304", color: "#fff" }}
+      >
         <Toolbar>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Home sx={{ mr: 2 }} style={{ color: "#fff" }} />
@@ -88,10 +92,7 @@ const StudentRegistration = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <div
-       
-        className={classes.cardHolder}
-      >
+      <div className={classes.cardHolder}>
         <Form submitForm={getDataFromDatabase} start={start} />
       </div>
     </>

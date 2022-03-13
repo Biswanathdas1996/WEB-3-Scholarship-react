@@ -4,7 +4,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 import VendorForm from "./VendorForm";
 import { AccountContest } from "../../App";
 import swal from "sweetalert";
-import contract from "../../contract/Lottery";
+import contract from "../../contract/Scholarship";
 import Home from "@mui/icons-material/Home";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
     alignItems: "center",
     height: "90vh",
     overflow: "auto",
-  }
+  },
 }));
 
 const VendorRegistration = () => {
@@ -51,7 +51,11 @@ const VendorRegistration = () => {
   return (
     <>
       {start && <LinearProgress color="secondary" />}
-      <AppBar position="relative" position="relative" style={{backgroundColor:"#d25304",color:"#fff"}}>
+      <AppBar
+        position="relative"
+        position="relative"
+        style={{ backgroundColor: "#d25304", color: "#fff" }}
+      >
         <Toolbar>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Home sx={{ mr: 2 }} style={{ color: "#fff" }} />
@@ -61,9 +65,7 @@ const VendorRegistration = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <div
-        className={classes.cardHolder}
-      >
+      <div className={classes.cardHolder}>
         <VendorForm submitForm={submitForm} start={start} />
       </div>
     </>

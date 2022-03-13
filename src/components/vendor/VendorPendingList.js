@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import VendorData from "./VendorData";
-import contract from "../../contract/Lottery";
+import contract from "../../contract/Scholarship";
 import AdminHeader from "../admin/AdminHeader";
 
 const theme = createTheme();

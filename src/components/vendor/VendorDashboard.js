@@ -75,7 +75,7 @@ export default function VendorDashboard(props) {
               </Grid> */}
 
               <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DashboardCard title="Total Issued Device" image_index="4" count="0"/>
+                <DashboardCard title="Total Issued Device" image_index="3" count="0"/>
               </Grid>
               <Grid item xl={3} lg={3} sm={6} xs={12}>
                 <DashboardCard title="Earning" image_index="4" count={

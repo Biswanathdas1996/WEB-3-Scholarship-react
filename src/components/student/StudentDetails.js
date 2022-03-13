@@ -15,8 +15,6 @@ import { Divider } from "@mui/material";
 import StudentHeader from "./StudentHeader";
 import IssuedStudentData from "../vendor/IssuedStudentData";
 import LinearProgress from "@mui/material/LinearProgress";
-import { Route, useParams } from "react-router-dom";
-
 const theme = createTheme();
 export default function StudentDetails() {
   const [studentData, setStudentData] = useState([]);

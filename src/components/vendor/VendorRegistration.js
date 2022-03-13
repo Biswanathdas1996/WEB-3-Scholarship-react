@@ -53,7 +53,6 @@ const VendorRegistration = () => {
       {start && <LinearProgress color="secondary" />}
       <AppBar
         position="relative"
-        position="relative"
         style={{ backgroundColor: "#d25304", color: "#fff" }}
       >
         <Toolbar>

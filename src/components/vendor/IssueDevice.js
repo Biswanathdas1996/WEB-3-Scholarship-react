@@ -103,6 +103,7 @@ export default function IssueDevice() {
                             <Button
                               variant="outlined"
                               onClick={findStudentByRoll}
+                              className="btn btn-default btn-primary"
                             >
                               Search
                             </Button>
@@ -177,7 +178,7 @@ export default function IssueDevice() {
                                 <td>
                                   <Button
                                     variant="contained"
-                                    style={{ backgroundColor: "#19662b" }}
+                                    className="btn btn-default btn-primary"
                                     onClick={() => setDetailsIndex(row?.slNo)}
                                   >
                                     Issue

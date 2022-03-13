@@ -11,7 +11,7 @@ import PeopleIcon from "@mui/icons-material/PeopleOutlined";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { DashboardCard } from "../common/DashboadCard";
 const theme = createTheme();
-
+ 
 export default function AdminDashboard() {
   return (
     <ThemeProvider theme={theme}>
@@ -84,7 +84,6 @@ export default function AdminDashboard() {
                 <DashboardCard title="Contact Balance" image_index="4" count="40.ETH"/>
               </Grid>
             </Grid>
-            <StartScholarship />
           </Container>
         </Box>
       </main>

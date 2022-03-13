@@ -44,6 +44,16 @@ export default function AdminHeader({ name }) {
               Issued Devices
             </Button>
           </Link>
+          <Link to="/all-transaction" style={{ textDecoration: "none" }}>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              All Transaction
+            </Button>
+          </Link>
+          <Link to="/admin-wallet" style={{ textDecoration: "none" }}>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              Wallet Balance
+            </Button>
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>

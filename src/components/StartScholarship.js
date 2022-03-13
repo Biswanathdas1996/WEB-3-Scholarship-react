@@ -161,13 +161,13 @@ const FormUI = () => {
             </div>
           </Col>
         </Row>
-        <Row style={{ marginTop: 30 }}>
+        {/* <Row style={{ marginTop: 30 }}>
           <Col>
             <h3>Transctions </h3>
             <p>List of amount deposit</p>
             <TransctionList depositors={depositors} />
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </>
   );

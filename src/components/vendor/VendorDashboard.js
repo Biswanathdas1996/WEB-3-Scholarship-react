@@ -20,7 +20,7 @@ const theme = createTheme();
 
 export default function VendorDashboard(props) {
   const [vendorData, setVendorData] = useState([]);
-  let { id } = useParams();
+  const id = localStorage.getItem("vendorID");
 
   useEffect(() => {
     fetchVendorData();

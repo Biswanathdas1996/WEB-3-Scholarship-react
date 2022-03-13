@@ -11,11 +11,22 @@ import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ImageCard } from "../common/ImageCard";
+import VendorListModal from "./VendorListModal";
+
 const theme = createTheme();
 
 export default function LandingPage() {
+  const [openVendorModal, setOpenVendorModal] = React.useState(false);
+  const closeVendorModal = () => setOpenVendorModal(false);
+
   return (
     <ThemeProvider theme={theme}>
+      {openVendorModal && (
+        <VendorListModal
+          openVendorModal={openVendorModal}
+          closeVendorModal={closeVendorModal}
+        />
+      )}
       <CssBaseline />
       <AppBar
         position="relative"
@@ -72,12 +83,10 @@ export default function LandingPage() {
                 <Link to="/vendor-register" style={{ textDecoration: "none" }}>
                   <ImageCard title="Vendor Register" image_index="1" />
                 </Link>
-                <Link
-                  to="/vendor-dashboard/0"
-                  style={{ textDecoration: "none" }}
-                >
+                <div onClick={() => setOpenVendorModal(true)}>
                   <ImageCard title="Vendor Dashboard" image_index="2" />
-                </Link>
+                </div>
+
                 <Link to="/admin-dashboard" style={{ textDecoration: "none" }}>
                   <ImageCard title="Admin Dashboard" image_index="3" />
                 </Link>

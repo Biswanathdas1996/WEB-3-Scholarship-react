@@ -1,18 +1,33 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AdminHeader from "./AdminHeader";
-import { DataCard } from "../common/DataCard";
-import StartScholarship from "../StartScholarship";
-import PeopleIcon from "@mui/icons-material/PeopleOutlined";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { DashboardCard } from "../common/DashboadCard";
+import contract from "../../contract/Scholarship";
+
 const theme = createTheme();
- 
+
 export default function AdminDashboard() {
+  const [studentList, setStudentList] = useState([]);
+  const [vendorList, setVendorList] = useState([]);
+  const [deviceIssue, setDeviceIssue] = useState([]);
+
+  useEffect(() => {
+    fetchStudentData();
+  }, []);
+
+  async function fetchStudentData() {
+    const students = await contract.methods.getListOfStudents().call();
+    setStudentList(students);
+    const vendors = await contract.methods.getListOfVendors().call();
+    setVendorList(vendors);
+    const devices = await contract.methods.getListOfDeviceIssue().call();
+    setDeviceIssue(devices);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -33,55 +48,36 @@ export default function AdminDashboard() {
           }}
         >
           <Container maxWidth={false}>
-           {/*  <Grid container spacing={3}>
-              <Grid item lg={3} sm={6} xl={3} xs={12}>
-                <DataCard
-                  name="Total Student"
-                  icon={<PeopleIcon />}
-                  count="1"
+            <Grid container spacing={3}>
+              <Grid item xl={3} lg={3} sm={6} xs={12}>
+                <DashboardCard
+                  title="Total Student"
+                  image_index="3"
+                  count={studentList?.length}
                 />
               </Grid>
               <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DataCard
-                  name="Total Pending Vendor"
-                  icon={<PeopleIcon />}
-                  count="0"
-                />
-              </Grid>
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DataCard
-                  name="Total Approved Vendor"
-                  icon={<PeopleIcon />}
-                  count="0"
+                <DashboardCard
+                  title="Total Vendor"
+                  image_index="2"
+                  count={vendorList?.length}
                 />
               </Grid>
 
               <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DataCard
-                  name="Total Issued Device"
-                  icon={<AccountBalanceWalletIcon />}
-                  count="2"
+                <DashboardCard
+                  title="Total Device Issue"
+                  image_index="3"
+                  count={deviceIssue?.length}
                 />
               </Grid>
-            </Grid> */}
 
-            <Grid container spacing={3}>
               <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DashboardCard title="Total Student" image_index="3" count="0"/>
-              </Grid>
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DashboardCard title="Total Pending Vendor" image_index="2" count="0"/>
-              </Grid>
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DashboardCard title="Total Approved Vendor" image_index="1" count="0"/>
-              </Grid>
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DashboardCard title="Total Issued Device" image_index="3" count="0"/>
-              </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DashboardCard title="Contact Balance" image_index="4" count="40.ETH"/>
+                <DashboardCard
+                  title="Contact Balance"
+                  image_index="4"
+                  count="40.ETH"
+                />
               </Grid>
             </Grid>
           </Container>

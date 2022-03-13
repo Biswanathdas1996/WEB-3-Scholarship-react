@@ -11,11 +11,31 @@ import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ImageCard } from "../common/ImageCard";
+import VendorListModal from "./VendorListModal";
+import StudentListModal from "./StudentListModal";
+
 const theme = createTheme();
 
 export default function LandingPage() {
+  const [openVendorModal, setOpenVendorModal] = React.useState(false);
+  const [openStudentModal, setOpenStudentModal] = React.useState(false);
+  const closeVendorModal = () => setOpenVendorModal(false);
+  const closeStudentModal = () => setOpenStudentModal(false);
+
   return (
     <ThemeProvider theme={theme}>
+      {openVendorModal && (
+        <VendorListModal
+          openVendorModal={openVendorModal}
+          closeVendorModal={closeVendorModal}
+        />
+      )}
+      {openStudentModal && (
+        <StudentListModal
+          openStudentModal={openStudentModal}
+          closeStudentModal={closeStudentModal}
+        />
+      )}
       <CssBaseline />
       <AppBar
         position="relative"
@@ -72,21 +92,16 @@ export default function LandingPage() {
                 <Link to="/vendor-register" style={{ textDecoration: "none" }}>
                   <ImageCard title="Vendor Register" image_index="1" />
                 </Link>
-                <Link
-                  to="/vendor-dashboard/0"
-                  style={{ textDecoration: "none" }}
-                >
+                <div onClick={() => setOpenVendorModal(true)}>
                   <ImageCard title="Vendor Dashboard" image_index="2" />
-                </Link>
+                </div>
+
                 <Link to="/admin-dashboard" style={{ textDecoration: "none" }}>
                   <ImageCard title="Admin Dashboard" image_index="3" />
                 </Link>
-                <Link
-                  to="/student-details/0"
-                  style={{ textDecoration: "none" }}
-                >
+                <div onClick={() => setOpenStudentModal(true)}>
                   <ImageCard title="Student Dashboard" image_index="4" />
-                </Link>
+                </div>
               </div>
             </Stack>
           </Container>

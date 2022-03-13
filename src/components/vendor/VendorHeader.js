@@ -8,7 +8,10 @@ import { Box, Button } from "@mui/material";
 export default function VendorHeader({ name }) {
   return (
     <>
-      <AppBar position="relative" style={{backgroundColor:"#d25304",color:"#fff"}}>
+      <AppBar
+        position="relative"
+        style={{ backgroundColor: "#d25304", color: "#fff" }}
+      >
         <Toolbar>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Home sx={{ mr: 2 }} style={{ color: "#fff" }} />
@@ -17,7 +20,7 @@ export default function VendorHeader({ name }) {
             Vendor
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, ml: 5 }}>
-            <Link to="/vendor-dashboard/0" style={{ textDecoration: "none" }}>
+            <Link to="/vendor-dashboard" style={{ textDecoration: "none" }}>
               <Button sx={{ my: 2, color: "white", display: "block" }}>
                 Home
               </Button>

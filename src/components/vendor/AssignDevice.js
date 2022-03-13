@@ -31,6 +31,7 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
   const account = useContext(AccountContest);
 
   const [start, setStart] = useState(false);
+  const vendorId = localStorage.getItem("vendorID");
 
   const saveData = (value) => {
     const { otp, imei, amount, remark } = value;
@@ -51,7 +52,14 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
   const submitForm = async (deviceIMEI, otp, amount, remark) => {
     setStart(true);
     await contract.methods
-      .issueNewDevice(deviceIMEI, studentDetails.slNo, otp, 0, amount, remark)
+      .issueNewDevice(
+        deviceIMEI,
+        studentDetails.slNo,
+        otp,
+        vendorId,
+        amount,
+        remark
+      )
       .send({
         from: account[0],
         value: 0,

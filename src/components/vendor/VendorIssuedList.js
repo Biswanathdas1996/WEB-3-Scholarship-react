@@ -11,14 +11,19 @@ import VendorHeader from "./VendorHeader";
 const theme = createTheme();
 export default function AllIssuedList() {
   const [issueDevice, setIssueDevice] = useState([]);
+  const vendorId = localStorage.getItem("vendorID");
+
   useEffect(() => {
     fetchStudentData();
   }, []);
 
   async function fetchStudentData() {
     const deviceIssue = await contract.methods.getListOfDeviceIssue().call();
-    setIssueDevice(deviceIssue);
-    console.log("deviceIssue", deviceIssue);
+    const filterData = deviceIssue.filter(
+      (data) => data.vendorIndex === vendorId
+    );
+    setIssueDevice(filterData);
+    console.log("deviceIssue", filterData);
   }
 
   return (

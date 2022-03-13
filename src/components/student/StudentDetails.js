@@ -40,7 +40,7 @@ export default function StudentDetails() {
   async function filterIssueDeviceData() {
     setStart(true);
     const deviceIssue = await contract.methods.getListOfDeviceIssue().call();
-
+    console.log("=======", deviceIssue);
     await setIssueDevice(deviceIssue);
     setStart(false);
   }
@@ -113,7 +113,7 @@ export default function StudentDetails() {
                   <IssuedStudentData
                     title="Iussed Device List"
                     issueDevice={issueDevice?.filter(
-                      (data) => data.rollNo === studentData?.rollNo
+                      (data) => data.studentIndex === id
                     )}
                     back_url=""
                   />

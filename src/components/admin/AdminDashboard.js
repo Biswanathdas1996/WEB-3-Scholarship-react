@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AdminHeader from "./AdminHeader";
 import { DashboardCard } from "../common/DashboadCard";
 import contract from "../../contract/Scholarship";
+import web3 from "../../web3";
 
 const theme = createTheme();
 
@@ -14,6 +15,7 @@ export default function AdminDashboard() {
   const [studentList, setStudentList] = useState([]);
   const [vendorList, setVendorList] = useState([]);
   const [deviceIssue, setDeviceIssue] = useState([]);
+  const [balance, setBalance] = useState(null);
 
   useEffect(() => {
     fetchStudentData();
@@ -26,6 +28,9 @@ export default function AdminDashboard() {
     setVendorList(vendors);
     const devices = await contract.methods.getListOfDeviceIssue().call();
     setDeviceIssue(devices);
+
+    const balanceData = await web3.eth.getBalance(contract.options.address);
+    setBalance(balanceData);
   }
 
   return (
@@ -74,9 +79,12 @@ export default function AdminDashboard() {
 
               <Grid item xl={3} lg={3} sm={6} xs={12}>
                 <DashboardCard
-                  title="Contact Balance"
+                  title="Wallet Balance"
                   image_index="4"
-                  count="40.ETH"
+                  count={
+                    parseFloat(balance / 1000000000000000000).toFixed(2) +
+                    " ETH"
+                  }
                 />
               </Grid>
             </Grid>

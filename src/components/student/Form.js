@@ -10,11 +10,11 @@ import { findByLabelText } from "@testing-library/react";
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   card: {
     maxWidth: 900,
-    width:500,
+    width: 500,
     borderRadius: 5,
     marginTop: "3rem",
-    display:"flex",
-    marginLeft:"33%"
+    display: "flex",
+    marginLeft: "33%",
   },
 }));
 
@@ -29,7 +29,7 @@ const FormUI = ({ submitForm, start }) => {
 
   const saveData = (value) => {
     const { name, roll_no, dob } = value;
-    console.log(value);
+
     swal({
       title: "Are you sure?",
       text: "Want to submit the form !",
@@ -48,7 +48,11 @@ const FormUI = ({ submitForm, start }) => {
       <Card className={classes.card}>
         <Grid container>
           <Grid item lg={12} md={12} sm={12} xs={12}>
-            <Typography  style={{marginLeft:"15px",marginTop:"10px",padding:3}} component="h1" variant="h5">
+            <Typography
+              style={{ marginLeft: "15px", marginTop: "10px", padding: 3 }}
+              component="h1"
+              variant="h5"
+            >
               Student Registration
             </Typography>
             <div
@@ -63,7 +67,6 @@ const FormUI = ({ submitForm, start }) => {
                 }}
                 validationSchema={LoginSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                  console.log(values);
                   saveData(values);
                   setSubmitting(false);
                 }}
@@ -131,8 +134,7 @@ const FormUI = ({ submitForm, start }) => {
                       <input
                         className="btn btn-default btn-primary"
                         type="submit"
-                        disabled={start}
-                        value={start ? "Please wait" : "Submit"}
+                        value={"Submit"}
                       />
                     </span>
                   </Form>

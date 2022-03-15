@@ -36,14 +36,12 @@ const StudentRegistration = () => {
         value: 0,
       })
       .then((data) => {
-        console.log("=>", data);
         swal("Amount successfully transfered", {
           icon: "success",
         });
         setStart(false);
       })
       .catch((error) => {
-        console.log("error-->", error);
         swal(error.message, {
           icon: "error",
         });

@@ -2,13 +2,13 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import contract from "../../contract/Scholarship";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
 import { Avatar, ListItemAvatar } from "@mui/material";
+import { BlockChatinGetData } from "../../ABI-connect/connect";
 
 const style = {
   position: "absolute",
@@ -34,9 +34,9 @@ export default function BasicModal({ openVendorModal, closeVendorModal }) {
 
   async function fetchVendorData() {
     setStart(true);
-    const vendorList = await contract.methods.getListOfVendors().call();
+    const vendorList = await BlockChatinGetData("getListOfVendors");
     const vendor = vendorList.filter((item) => item.status === true);
-    console.log("vendor", vendorList);
+
     setVendorData(vendor);
     setStart(false);
   }
@@ -63,11 +63,11 @@ export default function BasicModal({ openVendorModal, closeVendorModal }) {
                 return (
                   <List>
                     <ListItem disablePadding>
-                    
                       <ListItemButton onClick={() => login(data?.slNo)}>
                         <ListItemAvatar>
-                          <Avatar style={{backgroundColor: '#e78d13'}}>
-                          </Avatar>
+                          <Avatar
+                            style={{ backgroundColor: "#e78d13" }}
+                          ></Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={data?.name} />
                       </ListItemButton>

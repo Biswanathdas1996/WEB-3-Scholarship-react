@@ -33,7 +33,6 @@ const App = () => {
     setPlayer(players);
 
     const studentList = await lottery.methods.getListOfStudents().call();
-    console.log(studentList);
 
     const balance = await web3.eth.getBalance(lottery.options.address);
     setBalance(balance);

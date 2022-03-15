@@ -7,6 +7,14 @@ export default function IssuedStudentData({ title, issueDevice, start }) {
   return (
     <React.Fragment>
       {start && <LinearProgress color="secondary" />}
+      <a
+        href={`https://rinkeby.etherscan.io/address/0x8d7a184f034e21d59a6456431e0fe742a0b87727#internaltx`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <h5 style={{ float: "right", fontSize: 15 }}>View Transactions</h5>
+      </a>
+
       <Title>{title}</Title>
 
       <Table

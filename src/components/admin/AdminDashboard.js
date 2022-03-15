@@ -6,8 +6,10 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AdminHeader from "./AdminHeader";
 import { DashboardCard } from "../common/DashboadCard";
-import contract from "../../contract/Scholarship";
-import web3 from "../../web3";
+import {
+  GetContractBalance,
+  BlockChatinGetData,
+} from "../../ABI-connect/connect";
 
 const theme = createTheme();
 
@@ -22,14 +24,14 @@ export default function AdminDashboard() {
   }, []);
 
   async function fetchStudentData() {
-    const students = await contract.methods.getListOfStudents().call();
+    const students = await BlockChatinGetData("getListOfStudents");
     setStudentList(students);
-    const vendors = await contract.methods.getListOfVendors().call();
+    const vendors = await BlockChatinGetData("getListOfVendors");
     setVendorList(vendors);
-    const devices = await contract.methods.getListOfDeviceIssue().call();
+    const devices = await BlockChatinGetData("getListOfDeviceIssue");
     setDeviceIssue(devices);
 
-    const balanceData = await web3.eth.getBalance(contract.options.address);
+    const balanceData = await GetContractBalance();
     setBalance(balanceData);
   }
 

@@ -10,7 +10,6 @@ const TransctionList = () => {
   async function fetchData() {
     const students = await lottery.methods.getListOfStudents().call();
     setStudentsData(students);
-    console.log("students", students);
   }
 
   useEffect(() => {

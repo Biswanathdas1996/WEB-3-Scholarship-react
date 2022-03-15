@@ -21,9 +21,6 @@ const App = () => {
 
     const manager = await lottery.methods.manager().call();
     setManager(manager);
-
-    const studentList = await lottery.methods.getListOfStudents().call();
-    console.log(studentList);
   }
 
   useEffect(() => {

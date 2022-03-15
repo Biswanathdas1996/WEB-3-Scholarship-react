@@ -5,9 +5,9 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import VendorHeader from "./VendorHeader";
-import contract from "../../contract/Scholarship";
 import VendorInfo from "./VendorInfo";
 import { DashboardCard } from "../common/DashboadCard";
+import { BlockChatinGetData } from "../../ABI-connect/connect";
 
 const theme = createTheme();
 
@@ -20,9 +20,8 @@ export default function VendorDashboard(props) {
   }, []);
 
   async function fetchVendorData() {
-    const vendorList = await contract.methods.getListOfVendors().call();
+    const vendorList = await BlockChatinGetData("getListOfVendors");
 
-    console.log("vendor", vendorList[id]);
     vendorList[id] && setVendorData(vendorList[id]);
   }
 
@@ -48,32 +47,38 @@ export default function VendorDashboard(props) {
           <Container maxWidth={false}>
             <Grid container spacing={3}>
               <Grid item xl={4} lg={4} sm={4} xs={12}>
-                <Container maxWidth={false} style={{ marginTop: 30,height:"100%" }}>
+                <Container
+                  maxWidth={false}
+                  style={{ marginTop: 30, height: "100%" }}
+                >
                   <center>
                     <VendorInfo vendorData={vendorData} />
                   </center>
                 </Container>
-
               </Grid>
 
               <Grid item xl={6} lg={6} sm={6} xs={12}>
-                  <Grid item xl={3} lg={3} sm={6} xs={12}>
-                    <DashboardCard title="Total Issued Device" image_index="3" count="0"/>
-                  </Grid>
-                  <Grid item xl={3} lg={3} sm={6} xs={12}>
-                    <DashboardCard title="Earning" image_index="4" count={
-                        parseFloat(
-                          vendorData?.amount / 1000000000000000000
-                        ).toFixed(2) + " ETH"
-                      }/>
-                  </Grid>
+                <Grid item xl={3} lg={3} sm={6} xs={12}>
+                  <DashboardCard
+                    title="Total Issued Device"
+                    image_index="3"
+                    count="0"
+                  />
+                </Grid>
+                <Grid item xl={3} lg={3} sm={6} xs={12}>
+                  <DashboardCard
+                    title="Earning"
+                    image_index="4"
+                    count={
+                      parseFloat(
+                        vendorData?.amount / 1000000000000000000
+                      ).toFixed(2) + " ETH"
+                    }
+                  />
+                </Grid>
               </Grid>
-            
-             
-              
             </Grid>
           </Container>
-          
         </Box>
       </main>
     </ThemeProvider>

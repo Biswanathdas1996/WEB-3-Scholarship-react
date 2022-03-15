@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Title from "./Title";
@@ -13,10 +13,10 @@ import {
 } from "@mui/material";
 import * as Yup from "yup";
 import swal from "sweetalert";
-import contract from "../../contract/Scholarship";
-import { AccountContest } from "../../App";
-import LinearProgress from "@mui/material/LinearProgress";
+
 import web3 from "../../web3";
+import { BlockChatinTransction } from "../../ABI-connect/connect";
+import TransctionModal from "../shared/TransctionModal";
 
 const AssignDeviceSchema = Yup.object().shape({
   otp: Yup.string().required("Otp is required"),
@@ -25,15 +25,14 @@ const AssignDeviceSchema = Yup.object().shape({
 });
 
 export default function AssignDevice({ studentDetails, setDetailsIndex }) {
-  const account = useContext(AccountContest);
-
   const [start, setStart] = useState(false);
   const vendorId = localStorage.getItem("vendorID");
+  const [response, setResponse] = useState(null);
 
   const saveData = (value) => {
     const { otp, imei, amount, remark } = value;
     const toatalAmount = web3.utils.toWei(amount, "ether");
-    console.log(value);
+
     swal({
       title: "Are you sure?",
       text: "Want to submit the form !",
@@ -49,38 +48,22 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
 
   const submitForm = async (deviceIMEI, otp, amount, remark) => {
     setStart(true);
-    await contract.methods
-      .issueNewDevice(
-        deviceIMEI,
-        studentDetails.slNo,
-        otp,
-        vendorId,
-        amount,
-        remark
-      )
-      .send({
-        from: account[0],
-        value: 0,
-      })
-      .then((data) => {
-        console.log("=>", data);
-        swal("Device issued !", {
-          icon: "success",
-        });
-        setStart(false);
-      })
-      .catch((error) => {
-        console.log("error-->", error);
-        swal(error.message, {
-          icon: "error",
-        });
-        setStart(false);
-      });
+    const responseData = await BlockChatinTransction(
+      "issueNewDevice",
+      deviceIMEI,
+      studentDetails.slNo,
+      otp,
+      vendorId,
+      amount,
+      remark
+    );
+
+    setResponse(responseData);
   };
 
   return (
     <>
-      {start && <LinearProgress color="secondary" />}
+      {start && <TransctionModal response={response} />}
 
       <Grid item xs={12}>
         <Title>
@@ -143,7 +126,6 @@ export default function AssignDevice({ studentDetails, setDetailsIndex }) {
               }}
               validationSchema={AssignDeviceSchema}
               onSubmit={(values, { setSubmitting }) => {
-                console.log(values);
                 saveData(values);
                 setSubmitting(false);
               }}

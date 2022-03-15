@@ -7,14 +7,13 @@ import { Card, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
- 
   card: {
     maxWidth: 900,
-    width:500,
+    width: 500,
     borderRadius: 5,
     marginTop: "3rem",
-    display:"flex",
-    marginLeft:"33%"
+    display: "flex",
+    marginLeft: "33%",
   },
 }));
 
@@ -30,7 +29,6 @@ const VendorForm = ({ submitForm, start }) => {
 
   const saveData = (value) => {
     const { name, registration_no, address, pincode } = value;
-    console.log("value-", value);
 
     swal({
       title: "Are you sure?",
@@ -50,7 +48,11 @@ const VendorForm = ({ submitForm, start }) => {
       <Card className={classes.card}>
         <Grid container>
           <Grid item lg={12} md={12} sm={12} xs={12}>
-            <Typography style={{marginLeft:"15px",marginTop:"10px",padding:3}} component="h1" variant="h5">
+            <Typography
+              style={{ marginLeft: "15px", marginTop: "10px", padding: 3 }}
+              component="h1"
+              variant="h5"
+            >
               Vendor Registration
             </Typography>
             <div
@@ -154,8 +156,7 @@ const VendorForm = ({ submitForm, start }) => {
                       <input
                         className="btn btn-default btn-primary"
                         type="submit"
-                        disabled={start}
-                        value={start ? "Please wait" : "Submit"}
+                        value={"Submit"}
                       />
                     </span>
                   </Form>

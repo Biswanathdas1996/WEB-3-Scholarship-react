@@ -14,7 +14,6 @@ const LoginSchema = Yup.object().shape({
 
 const FormUI = ({ submitForm }) => {
   const saveData = (value) => {
-    console.log(value);
     const { name, number } = value;
     swal({
       title: "Are you sure?",

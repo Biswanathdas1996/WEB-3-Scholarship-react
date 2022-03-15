@@ -5,9 +5,9 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import contract from "../../contract/Scholarship";
 import StudentData from "./StudentData";
 import AdminHeader from "../admin/AdminHeader";
+import { BlockChatinGetData } from "../../ABI-connect/connect";
 
 const theme = createTheme();
 export default function StudentList() {
@@ -19,10 +19,9 @@ export default function StudentList() {
 
   async function fetchStudentData() {
     setStart(true);
-    const students = await contract.methods.getListOfStudents().call();
+    const students = await BlockChatinGetData("getListOfStudents");
     setStudentList(students);
     setStart(false);
-    console.log("students", students);
   }
 
   return (

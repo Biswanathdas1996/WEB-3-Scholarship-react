@@ -5,9 +5,10 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import contract from "../../contract/Scholarship";
 import IssuedStudentData from "../vendor/IssuedStudentData";
 import AdminHeader from "./AdminHeader";
+import { BlockChatinGetData } from "../../ABI-connect/connect";
+
 const theme = createTheme();
 export default function AllIssuedList() {
   const [issueDevice, setIssueDevice] = useState([]);
@@ -18,9 +19,8 @@ export default function AllIssuedList() {
 
   async function fetchStudentData() {
     setStart(true);
-    const deviceIssue = await contract.methods.getListOfDeviceIssue().call();
+    const deviceIssue = await BlockChatinGetData("getListOfDeviceIssue");
     setIssueDevice(deviceIssue);
-    console.log("deviceIssue", deviceIssue);
     setStart(false);
   }
 

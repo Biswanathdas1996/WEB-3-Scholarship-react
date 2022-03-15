@@ -2,13 +2,13 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import contract from "../../contract/Scholarship";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
 import { Avatar, ListItemAvatar } from "@mui/material";
+import { BlockChatinGetData } from "../../ABI-connect/connect";
 
 const style = {
   position: "absolute",
@@ -34,8 +34,8 @@ export default function BasicModal({ openStudentModal, closeStudentModal }) {
 
   async function fetchVendorData() {
     setStart(true);
-    const studentList = await contract.methods.getListOfStudents().call();
-    console.log(studentList);
+    const studentList = await BlockChatinGetData("getListOfStudents");
+
     setVendorData(studentList);
     setStart(false);
   }
@@ -64,8 +64,9 @@ export default function BasicModal({ openStudentModal, closeStudentModal }) {
                     <ListItem disablePadding>
                       <ListItemButton onClick={() => login(data?.slNo)}>
                         <ListItemAvatar>
-                          <Avatar style={{backgroundColor: '#e78d13'}}>
-                          </Avatar>
+                          <Avatar
+                            style={{ backgroundColor: "#e78d13" }}
+                          ></Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={data?.name} />
                       </ListItemButton>

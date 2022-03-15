@@ -29,7 +29,7 @@ const FormUI = () => {
 
     const depositors = await lottery.methods.getListOfDepositors().call();
     setDepositors(depositors);
-    console.log("depositors", depositors);
+
     setStart(false);
   }
 
@@ -46,14 +46,12 @@ const FormUI = () => {
         value: number,
       })
       .then((data) => {
-        console.log("=>", data);
         swal("Process successfully completed", {
           icon: "success",
         });
         fetchData();
       })
       .catch((error) => {
-        console.log("error-->", error);
         swal(error.message, {
           icon: "error",
         });
@@ -62,7 +60,6 @@ const FormUI = () => {
   };
 
   const saveData = (value) => {
-    console.log(value);
     const { number } = value;
     swal({
       title: "Are you sure?",

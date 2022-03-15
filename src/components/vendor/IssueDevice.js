@@ -8,9 +8,9 @@ import Paper from "@mui/material/Paper";
 import Table from "react-bootstrap/Table";
 import Title from "../vendor/Title";
 import { Button, Divider, TextField } from "@mui/material";
-import contract from "../../contract/Scholarship";
 import VendorHeader from "./VendorHeader";
 import AssignDevice from "./AssignDevice";
+import { BlockChatinGetData } from "../../ABI-connect/connect";
 
 const theme = createTheme();
 export default function IssueDevice() {
@@ -26,26 +26,19 @@ export default function IssueDevice() {
   }, []);
 
   async function fetchIssueDevice() {
-    const listOfDeviceIssue = await contract.methods
-      .getListOfDeviceIssue()
-      .call();
-
-    console.log("listOfDeviceIssue", listOfDeviceIssue);
+    const listOfDeviceIssue = await BlockChatinGetData("getListOfDeviceIssue");
   }
 
   async function fetchStudentData() {
-    const students = await contract.methods.getListOfStudents().call();
+    const students = await BlockChatinGetData("getListOfStudents");
     setStudentList(students);
-    console.log("students", students);
   }
 
   const findStudentByRoll = async () => {
     setIsSubmit(true);
     let newStudenList = studentList.filter((item) => item.rollNo == rollNo);
 
-    console.log("dsdsstudent-", newStudenList);
     await setStudent(newStudenList);
-    console.log("new student-", student);
   };
 
   return (

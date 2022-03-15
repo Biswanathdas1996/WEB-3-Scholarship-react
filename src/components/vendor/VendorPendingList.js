@@ -6,8 +6,8 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import VendorData from "./VendorData";
-import contract from "../../contract/Scholarship";
 import AdminHeader from "../admin/AdminHeader";
+import { BlockChatinGetData } from "../../ABI-connect/connect";
 
 const theme = createTheme();
 export default function VendorPendingList() {
@@ -19,9 +19,9 @@ export default function VendorPendingList() {
 
   async function fetchVendorData() {
     setStart(true);
-    const vendorList = await contract.methods.getListOfVendors().call();
+    const vendorList = await BlockChatinGetData("getListOfVendors");
     const pendingVendor = vendorList.filter((item) => item.status === false);
-    console.log("vendor", vendorList);
+
     setVendorData(pendingVendor);
     setStart(false);
   }

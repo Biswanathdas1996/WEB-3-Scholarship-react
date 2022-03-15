@@ -1,4 +1,4 @@
-import  React,{useContext,useState,useEffect} from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,7 +9,7 @@ import AdminHeader from "./AdminHeader";
 import lottery from "../../contract/Scholarship";
 import { AccountContest } from "../../App";
 import web3 from "../../web3";
-import TransctionList from "../TransctionList"
+import TransctionList from "../TransctionList";
 
 import LinearProgress from "@mui/material/LinearProgress";
 const theme = createTheme();
@@ -27,7 +27,6 @@ export default function AllTransaction() {
 
     const depositors = await lottery.methods.getListOfDepositors().call();
     setDepositors(depositors);
-    console.log("depositors", depositors);
     setStart(false);
   }
 
@@ -36,7 +35,7 @@ export default function AllTransaction() {
   }, []);
   return (
     <ThemeProvider theme={theme}>
-       {start && <LinearProgress color="secondary" />}
+      {start && <LinearProgress color="secondary" />}
       <CssBaseline />
       <AdminHeader />
       <main>
@@ -55,13 +54,13 @@ export default function AllTransaction() {
           }}
         >
           <Container maxWidth={false}>
-          <Row style={{ marginTop: 30 }}>
-          <Col>
-            <h3>All Transctions </h3>
-            <p>List Of Amount Deposit</p>
-            <TransctionList depositors={depositors} />
-          </Col>
-        </Row>
+            <Row style={{ marginTop: 30 }}>
+              <Col>
+                <h3>All Transctions </h3>
+                <p>List Of Amount Deposit</p>
+                <TransctionList depositors={depositors} />
+              </Col>
+            </Row>
           </Container>
         </Box>
       </main>

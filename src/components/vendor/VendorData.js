@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Title from "../vendor/Title";
 import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
-import contract from "../../contract/Scholarship";
-import { AccountContest } from "../../App";
-import swal from "sweetalert";
+import { BlockChatinTransction } from "../../ABI-connect/connect";
+import TransctionModal from "../shared/TransctionModal";
 
 export default function VendorData({
   title,
@@ -13,63 +12,27 @@ export default function VendorData({
   fetchVendorData,
   pending,
 }) {
-  const account = useContext(AccountContest);
-
   const [start, setStart] = useState(false);
-
+  const [response, setResponse] = useState(null);
   const activateVendor = async (index) => {
     setStart(true);
-    await contract.methods
-      .approveVendor(index)
-      .send({
-        from: account[0],
-        value: 0,
-      })
-      .then((data) => {
-        console.log("=>", data);
-        swal("Vender approved !", {
-          icon: "success",
-        });
-        fetchVendorData();
-        setStart(false);
-      })
-      .catch((error) => {
-        console.log("error-->", error);
-        swal(error.message, {
-          icon: "error",
-        });
-        setStart(false);
-      });
+    const responseData = await BlockChatinTransction("approveVendor", index);
+    fetchVendorData();
+
+    setResponse(responseData);
   };
 
   const deActivateVendor = async (index) => {
     setStart(true);
-    await contract.methods
-      .rejectVendor(index)
-      .send({
-        from: account[0],
-        value: 0,
-      })
-      .then((data) => {
-        console.log("=>", data);
-        swal("Vender deactivate !", {
-          icon: "success",
-        });
-        fetchVendorData();
-        setStart(false);
-      })
-      .catch((error) => {
-        console.log("error-->", error);
-        swal(error.message, {
-          icon: "error",
-        });
-        setStart(false);
-      });
+    const responseData = await BlockChatinTransction("rejectVendor", index);
+    fetchVendorData();
+
+    setResponse(responseData);
   };
 
   return (
     <React.Fragment>
-      {(start || pending) && <LinearProgress color="secondary" />}
+      {start && <TransctionModal response={response} />}
       <Title>{title}</Title>
       <Table
         striped
@@ -114,7 +77,6 @@ export default function VendorData({
                       <Button
                         variant="contained"
                         color="success"
-                        disabled={start}
                         onClick={() => activateVendor(row?.slNo)}
                       >
                         Approve
@@ -123,7 +85,6 @@ export default function VendorData({
                       <Button
                         variant="contained"
                         color="error"
-                        disabled={start}
                         onClick={() => deActivateVendor(row?.slNo)}
                       >
                         In-active

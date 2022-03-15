@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import contract from "../../contract/Scholarship";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -15,6 +14,8 @@ import { Divider } from "@mui/material";
 import StudentHeader from "./StudentHeader";
 import IssuedStudentData from "../vendor/IssuedStudentData";
 import LinearProgress from "@mui/material/LinearProgress";
+import { BlockChatinGetData } from "../../ABI-connect/connect";
+
 const theme = createTheme();
 export default function StudentDetails() {
   const [studentData, setStudentData] = useState([]);
@@ -29,7 +30,7 @@ export default function StudentDetails() {
 
   async function fetchStudentData() {
     setStart(true);
-    const students = await contract.methods.getListOfStudents().call();
+    const students = await BlockChatinGetData("getListOfStudents");
 
     setStudentData(students[id]);
     filterIssueDeviceData();
@@ -37,13 +38,12 @@ export default function StudentDetails() {
 
   async function filterIssueDeviceData() {
     setStart(true);
-    const deviceIssue = await contract.methods.getListOfDeviceIssue().call();
-    console.log("=======", deviceIssue);
+    const deviceIssue = await BlockChatinGetData("getListOfDeviceIssue");
+
     await setIssueDevice(deviceIssue);
     setStart(false);
   }
 
-  console.log("students", issueDevice);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

@@ -1,15 +1,14 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import contract from "../../contract/Scholarship";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
+import { Avatar, ListItemAvatar } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -56,7 +55,7 @@ export default function BasicModal({ openStudentModal, closeStudentModal }) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Select student
+            Select Student
           </Typography>
           {vendorData.length > 0
             ? vendorData.map((data) => {
@@ -64,6 +63,10 @@ export default function BasicModal({ openStudentModal, closeStudentModal }) {
                   <List>
                     <ListItem disablePadding>
                       <ListItemButton onClick={() => login(data?.slNo)}>
+                        <ListItemAvatar>
+                          <Avatar style={{backgroundColor: '#e78d13'}}>
+                          </Avatar>
+                        </ListItemAvatar>
                         <ListItemText primary={data?.name} />
                       </ListItemButton>
                     </ListItem>

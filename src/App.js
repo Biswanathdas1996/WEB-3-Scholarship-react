@@ -16,8 +16,6 @@ import StudentDetails from "./components/student/StudentDetails";
 import VendorIssuedList from "./components/vendor/VendorIssuedList";
 import StartScholarship from "./components/StartScholarship";
 import AllIssuedList from "./components/admin/AllIssuedList";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import AdminWallet from "./components/admin/AdminWallet";
 import AllTransaction from "./components/admin/AllTransaction";
 

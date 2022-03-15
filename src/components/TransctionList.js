@@ -3,15 +3,17 @@ import Table from "react-bootstrap/Table";
 
 const TransctionList = ({ depositors }) => {
   return (
-    <Table striped bordered hover variant="dark">
-      <thead>
+    <Table striped
+    hover
+    style={{ backgroundColor: "rgb(245 245 245)", color: "black" }}>
+      <thead style={{ backgroundColor: "#e08912", color: "#fff" }}>
         <tr>
           <th>#</th>
           <th>Address</th>
           <th>Amount</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style={{ backgroundColor: "rgb(245 245 245)", color: "black" }}>
         {depositors &&
           depositors.map((data, index) => {
             const { depositerAddress, amount } = data;

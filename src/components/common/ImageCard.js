@@ -1,15 +1,10 @@
 import {
-  Avatar,
   Box,
   Button,
-  Card,
-  CardContent,
-  Grid,
   Typography,
 } from "@mui/material";
 import {
   FiCard,
-  FiCardActions,
   FiCardContent,
   FiCardMedia,
 } from "./FullImageCard";

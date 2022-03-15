@@ -1,6 +1,5 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
 import Home from "@mui/icons-material/Home";
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";

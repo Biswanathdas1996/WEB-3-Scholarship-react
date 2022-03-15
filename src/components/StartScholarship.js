@@ -98,7 +98,7 @@ const FormUI = () => {
             <br />
 
             <h1>
-              Current contract balance{" "}
+              Current Contract Balance :{" "}
               <b style={{ color: "#ff8f00" }}>
                 {parseFloat(balance / 1000000000000000000).toFixed(2)} ETH
               </b>

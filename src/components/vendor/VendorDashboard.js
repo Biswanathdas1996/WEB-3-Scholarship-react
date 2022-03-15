@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
-import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
-import Home from "@mui/icons-material/Home";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import VendorHeader from "./VendorHeader";
-import PeopleIcon from "@mui/icons-material/PeopleOutlined";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import { DataCard } from "../common/DataCard";
 import contract from "../../contract/Scholarship";
-import { Route, useParams } from "react-router-dom";
 import VendorInfo from "./VendorInfo";
 import { DashboardCard } from "../common/DashboadCard";
 
@@ -49,48 +41,39 @@ export default function VendorDashboard(props) {
                 : theme.palette.grey[900],
             flexGrow: 1,
             py: 4,
-            height: "100vh",
+            height: "90vh",
             overflow: "auto",
           }}
         >
           <Container maxWidth={false}>
             <Grid container spacing={3}>
-              {/* <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DataCard
-                  name="Total Issued Device"
-                  icon={<PeopleIcon />}
-                  count="0"
-                />
-              </Grid>
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DataCard
-                  name="Earning"
-                  icon={<AccountBalanceWalletIcon />}
-                  count={
-                    parseFloat(
-                      vendorData?.amount / 1000000000000000000
-                    ).toFixed(2) + " ETH"
-                  }
-                />
-              </Grid> */}
+              <Grid item xl={4} lg={4} sm={4} xs={12}>
+                <Container maxWidth={false} style={{ marginTop: 30,height:"100%" }}>
+                  <center>
+                    <VendorInfo vendorData={vendorData} />
+                  </center>
+                </Container>
 
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DashboardCard title="Total Issued Device" image_index="3" count="0"/>
               </Grid>
-              <Grid item xl={3} lg={3} sm={6} xs={12}>
-                <DashboardCard title="Earning" image_index="4" count={
-                    parseFloat(
-                      vendorData?.amount / 1000000000000000000
-                    ).toFixed(2) + " ETH"
-                  }/>
+
+              <Grid item xl={6} lg={6} sm={6} xs={12}>
+                  <Grid item xl={3} lg={3} sm={6} xs={12}>
+                    <DashboardCard title="Total Issued Device" image_index="3" count="0"/>
+                  </Grid>
+                  <Grid item xl={3} lg={3} sm={6} xs={12}>
+                    <DashboardCard title="Earning" image_index="4" count={
+                        parseFloat(
+                          vendorData?.amount / 1000000000000000000
+                        ).toFixed(2) + " ETH"
+                      }/>
+                  </Grid>
               </Grid>
+            
+             
+              
             </Grid>
           </Container>
-          <Container maxWidth={false} style={{ marginTop: 30 }}>
-            <center>
-              <VendorInfo vendorData={vendorData} />
-            </center>
-          </Container>
+          
         </Box>
       </main>
     </ThemeProvider>
